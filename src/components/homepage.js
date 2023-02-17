@@ -1,34 +1,33 @@
 import React from "react";
 
-function Homepage() {
+// const loginFunc = async () => {
+//   const response = await fetch("http://localhost:4000/api/v1/auth/login", {
+//     method: "POST",
+//     body: { username: "lev", password: "mary" },
+//   });
+//   console.log(response.json());
+// if response includes success, retreive the token(save it) then reroute to chats page and onload, fetch all comments using(headers.auhtorization = 'Bearer token')
+// };
+const testing = () => {
+  console.log("hooray");
+};
+function Homepage(props) {
   return (
     <div>
-      <Logo />
-      <Article />
-      <SignIn />
+      <section>
+        <img src="" alt="Applogo" />
+        <h1 className="appTitle">{props.appTitle}</h1>
+      </section>
+      <p>{props.text}</p>
+      <section>
+        <button onClick={testing}>Log In</button>
+        <div>
+          <p>New User?</p>
+          <button>Sign in</button>
+        </div>
+      </section>
     </div>
   );
 }
-const Logo = () => {
-  return (
-    <>
-      <img src="" alt="Applogo" />
-      <h1 className="appTitle">tell-IT</h1>
-    </>
-  );
-};
-const Article = () => {
-  return <p>got something on your mind? Share it here, stay unknown</p>;
-};
-const SignIn = () => {
-  return (
-    <section>
-      <button>Log In</button>
-      <div>
-        <p>New User?</p>
-        <a href="">Sign in</a>
-      </div>
-    </section>
-  );
-};
+
 export default Homepage;
