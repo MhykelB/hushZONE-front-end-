@@ -1,0 +1,49 @@
+* {
+  box-sizing: border-box;
+  background: none;
+  border: none;
+}
+body {
+  margin: 0;
+  background: gray;
+}
+#root {
+  display: flex;
+  flex-direction: row;
+}
+.container {
+  outline: 2px solid black;
+  max-width: 1440px;
+  margin: 8rem auto;
+  padding: 0 8rem;
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+}
+.header-bar {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  font-size: 3rem;
+  gap: 1rem;
+}
+.login-section {
+  display: flex;
+  flex-direction: row;
+  gap: 2rem;
+}
+#sign-section {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 0.5rem;
+}
+#app-text {
+  font-size: 2rem;
+}
+.login {
+  outline: 2px solid black;
+}
+.sign-up {
+  color: yellow;
+}
