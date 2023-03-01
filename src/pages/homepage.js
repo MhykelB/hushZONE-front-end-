@@ -1,5 +1,6 @@
 import React from "react";
-import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
+// import { useState, useEffect } from "react";
 
 // const loginFunc = async () => {
 //   const response = await fetch("http://localhost:4000/api/v1/auth/login", {
@@ -13,32 +14,19 @@ import { useState, useEffect } from "react";
 //   console.log("hooray");
 // };
 function Homepage(props) {
-  const [text, setText] = useState(props.text);
-  const testfunc = () => {
-    console.log("ok man");
-    setText((prev) => prev + "joke");
-  };
-  useEffect(() => {
-    testfunc();
-  }, []);
   return (
     <div className="container">
       <section className="header-bar">
         <img src="" alt="Applogo" />
         <h1 className="appTitle">{props.appTitle}</h1>
       </section>
-      <p id="app-text">{text}</p>
+      <p id="app-text">{props.text}</p>
       <section className="login-section">
-        <button
-          className="btn login"
-          onClick={() => {
-            setText((prevText) => {
-              return prevText + "good";
-            });
-          }}
-        >
-          Log In
-        </button>
+        <div className="btn login">
+          <Link to="/login">
+            <button>log in</button>
+          </Link>
+        </div>
         <div id="sign-section">
           <p>New User?</p>
           <a className="btn sign-up" href="./chatwindow.html">

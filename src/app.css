@@ -5,11 +5,33 @@
 }
 body {
   margin: 0;
-  background: gray;
+  background: rgb(221, 134, 134);
+}
+/* form {
+  display: flex;
+  flex-direction: column;
+} */
+.form-login {
+  margin: 5rem auto;
+  display: flex;
+  flex-direction: column;
+  background: white;
+  gap: 2rem;
+  padding: 3rem;
+}
+.input {
+  display: flex;
+  flex-direction: column;
+}
+input {
+  padding: 0.4rem 0.8rem;
+  border-radius: 3px;
+  outline: 2px solid rgb(112, 110, 110);
 }
 #root {
   display: flex;
   flex-direction: row;
+  gap: 0;
 }
 .container {
   outline: 2px solid black;
@@ -42,7 +64,12 @@ body {
   font-size: 2rem;
 }
 .login {
-  outline: 2px solid black;
+  outline: 2px solid rgb(123, 121, 121);
+  width: fit-content;
+  align-self: center;
+  padding: 0.4rem 0.8rem;
+  border-radius: 3px;
+  background: white;
 }
 .sign-up {
   color: yellow;

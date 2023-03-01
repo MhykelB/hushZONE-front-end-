@@ -1,0 +1,72 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: content-box;
+}
+
+body {
+  background: black;
+  color: white;
+}
+.chatWindowContainer {
+  outline: 2px solid rgb(25, 114, 5);
+  width: 1200px;
+  padding: 0 16rem;
+  margin: 0 auto;
+}
+.commentAndReply {
+  outline: 2px solid rgb(86, 85, 85);
+  display: flex;
+  flex-direction: column;
+  margin-top: 2em;
+}
+.replyBox {
+  outline: 2px solid black;
+  margin-left: 2rem;
+  padding-left: 1.8rem;
+}
+.comment {
+  display: flex;
+  gap: 1.2rem;
+  padding: 2em;
+}
+.comment-like-bar {
+  display: flex;
+  flex-direction: column;
+}
+.comment-body {
+  width: 100%;
+  outline: 2px solid black;
+  flex-direction: column;
+}
+.comment-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+.comment-header-image {
+  max-width: 30px;
+  max-height: 30px;
+}
+.comment-reply {
+  margin-left: auto;
+}
+.comment-header-edit {
+  margin-left: auto;
+  display: flex;
+  gap: 1rem;
+}
+.textArea {
+  margin: 2rem 0;
+  display: flex;
+  align-items: flex-start;
+  gap: 1em;
+}
+.textAreaBox {
+  width: 100%;
+  resize: none;
+  padding: 1em;
+  border: 1px solid rgb(184, 184, 184);
+  border-radius: 0.6em;
+  min-height: 6em;
+}
