@@ -22,6 +22,8 @@ body {
 .input {
   display: flex;
   flex-direction: column;
+  color: black;
+  margin-bottom: 2rem;
 }
 input {
   padding: 0.4rem 0.8rem;
@@ -63,7 +65,8 @@ input {
 #app-text {
   font-size: 2rem;
 }
-.login {
+.login,
+.Signup {
   outline: 2px solid rgb(123, 121, 121);
   width: fit-content;
   align-self: center;
@@ -71,6 +74,13 @@ input {
   border-radius: 3px;
   background: white;
 }
-.sign-up {
+.btn-sign-up {
   color: yellow;
+}
+.warning {
+  margin-top: 0.5rem;
+  color: red;
+}
+label {
+  margin-bottom: 0.5rem;
 }

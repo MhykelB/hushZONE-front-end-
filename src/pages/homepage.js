@@ -29,9 +29,9 @@ function Homepage(props) {
         </div>
         <div id="sign-section">
           <p>New User?</p>
-          <a className="btn sign-up" href="./chatwindow.html">
-            Sign up
-          </a>
+          <Link to="/signUp">
+            <button className="btn-sign-up">Sign up</button>
+          </Link>
         </div>
       </section>
     </div>
