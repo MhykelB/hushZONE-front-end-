@@ -1,18 +1,22 @@
 import { useState, useEffect } from "react";
 
 export const useFetchUser = (url) => {
-  const [allComments, setAllComments] = useState("");
+  const [allCommentsAndUserDetails, setAllComments] = useState("");
   useEffect(() => {
     async function fetchDAta() {
-      const token = JSON.parse(localStorage.getItem("token"));
-      const response = await fetch(url, {
-        method: "GET",
-        headers: { authorization: `Bearer ${token}` },
-      });
-      const chatArray = await response.json();
-      setAllComments(chatArray);
+      try {
+        const token = JSON.parse(localStorage.getItem("token"));
+        const response = await fetch(url, {
+          method: "GET",
+          headers: { authorization: `Bearer ${token}` },
+        });
+        const chatArray = await response.json();
+        setAllComments(chatArray);
+      } catch (error) {
+        console.log(error);
+      }
     }
     fetchDAta();
   }, [url]);
-  return { allComments };
+  return { allCommentsAndUserDetails, setAllComments };
 };

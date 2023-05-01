@@ -1,33 +1,48 @@
 import React from "react";
+import { useState } from "react";
 import { CommentWindow } from "../components/chatsWindow";
 import { useFetchUser } from "../customHooks/fecthUsers";
+import { SendCommentBtn } from "../components/requests";
+import NavBar from "../components/navBar";
 const commentsUrl = "http://localhost:4000/api/v1/comments";
 
-function ChatUI() {
-  const { allComments } = useFetchUser(commentsUrl);
-  // const [allComments, setAllComments] = useState("");
-  // useEffect(() => {
-  //   async function fetchDAta() {
-  //     const token = JSON.parse(localStorage.getItem("token"));
-  //     const response = await fetch(commentsUrl, {
-  //       method: "GET",
-  //       headers: { authorization: `Bearer ${token}` },
-  //     });
-  //     const chatArray = await response.json();
-  //     setAllComments(chatArray);
-  //   }
-  //   fetchDAta();
-  // }, []);
+export const CommentsProvider = React.createContext();
 
+function ChatUI() {
+  const [showResponseBox, setShowResponseBox] = useState(false);
+  const { allCommentsAndUserDetails, setAllComments } =
+    useFetchUser(commentsUrl);
+  const userInfo = allCommentsAndUserDetails.user;
   return (
-    <div className="chatWindowContainer">
-      {allComments ? <CommentWindow prop={allComments} /> : <p>loading...</p>}
-      {allComments && <TextBox user={allComments.user} />}
-    </div>
+    <CommentsProvider.Provider
+      value={{
+        allCommentsAndUserDetails,
+        userInfo,
+        setAllComments,
+        showResponseBox,
+        setShowResponseBox,
+      }}
+    >
+      <div className="chatWindowContainer">
+        {allCommentsAndUserDetails ? (
+          <>
+            <NavBar username={userInfo.username} />
+            <CommentWindow prop={allCommentsAndUserDetails} />
+          </>
+        ) : (
+          <p>loading...</p>
+        )}
+        {allCommentsAndUserDetails && (
+          <TextBox user={allCommentsAndUserDetails.user} />
+        )}
+      </div>
+    </CommentsProvider.Provider>
   );
 }
 
 const TextBox = ({ user }) => {
+  const [text, setText] = useState("");
+
   return (
     <section className="textArea">
       <img
@@ -36,10 +51,14 @@ const TextBox = ({ user }) => {
         alt="img"
       />
       <textarea
+        value={text}
+        onChange={(e) => {
+          setText(e.target.value);
+        }}
         placeholder="Add a comment..."
         className="textAreaBox"
       ></textarea>
-      <button className="comment-send send">SEND</button>
+      <SendCommentBtn userText={text} clearInput={setText} />
     </section>
   );
 };

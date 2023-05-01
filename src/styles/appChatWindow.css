@@ -35,32 +35,60 @@ body {
   flex-direction: column;
 }
 .comment-body {
+  display: flex;
   width: 100%;
-  outline: 2px solid black;
+  outline: 2px solid rgb(216, 205, 205);
   flex-direction: column;
+  gap: 0.1rem;
 }
 .comment-header {
   display: flex;
   align-items: center;
   gap: 1rem;
+  font-size: 0.8rem;
 }
 .comment-header-image {
   max-width: 30px;
   max-height: 30px;
 }
 .comment-reply {
+  display: flex;
+  gap: 0.3rem;
+  align-items: center;
   margin-left: auto;
+  outline: 2px solid black;
 }
 .comment-header-edit {
   margin-left: auto;
   display: flex;
   gap: 1rem;
 }
+.text {
+  margin-top: 1rem;
+  color: green;
+}
+.viewReplies {
+  font-size: 0.7rem;
+  color: rgb(104, 101, 101);
+  margin-left: 77.5%;
+}
+.viewReplies:hover {
+  color: rgb(18, 76, 117);
+}
 .textArea {
   margin: 2rem 0;
   display: flex;
   align-items: flex-start;
   gap: 1em;
+  outline: 2px solid green;
+}
+.responseBox {
+  display: flex;
+  gap: 1.2rem;
+  padding: 2em;
+}
+.ReplyWindow {
+  padding-left: 30px;
 }
 .textAreaBox {
   width: 100%;

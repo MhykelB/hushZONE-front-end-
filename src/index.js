@@ -1,9 +1,6 @@
 import React from "react";
-
 import ReactDOM from "react-dom/client";
-import "./appChatWindow.css";
-import "./app.css";
-import "./modal.css";
+import "./styles";
 import App from "./App";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));

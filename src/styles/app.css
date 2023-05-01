@@ -66,6 +66,7 @@ input {
   font-size: 2rem;
 }
 .login,
+.logout,
 .Signup {
   outline: 2px solid rgb(123, 121, 121);
   width: fit-content;

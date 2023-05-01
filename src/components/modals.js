@@ -7,5 +7,5 @@ const LoginSuccessModal = () => {
     </div>
   );
 };
-
+// correct to sign up succesful
 export default LoginSuccessModal;
