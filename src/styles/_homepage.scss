@@ -1,0 +1,190 @@
+@import "./variables";
+@import "./mixin";
+
+body {
+  margin: 0;
+  background: white;
+}
+
+.container {
+  @include flexColumn(3rem);
+  // outline: 2px solid black;
+  margin: 0rem auto;
+  margin-bottom: 0rem;
+  width: 90%;
+  padding-bottom: 20rem;
+  background: $color1;
+  height: 50rem;
+}
+////////////////////////////////////////
+.app-title {
+  @include flexRowCenter(5rem);
+  align-items: flex-end;
+
+  padding-left: 5rem;
+  // outline: 2px solid rgb(231, 5, 5);
+  i {
+    height: 300px;
+    width: 300px;
+  }
+  .appName {
+    margin-left: auto;
+    display: flex;
+    align-items: flex-end;
+    gap: 1rem;
+  }
+  .hush {
+    color: white;
+    font-family: $fam5;
+    font-weight: 100;
+    font-size: 7rem;
+    padding-bottom: 1rem;
+  }
+  .zone {
+    height: 28rem;
+    margin-left: auto;
+    padding: 0rem 1rem;
+    display: flex;
+    align-items: flex-end;
+    background: $dark-blue;
+    color: $orange;
+
+    p {
+      flex: 1;
+      font-size: 12rem;
+      font-family: $fam5;
+      font-weight: 100;
+    }
+  }
+}
+////////////////////////////////////////
+#app-text {
+  align-self: center;
+  font-size: 2rem;
+  font-family: $fam1;
+  color: $grey;
+}
+////////////////////////////////////////
+.login-section {
+  font-family: $fam2;
+  align-self: center;
+  @include flexRowCenter(5rem); // gap: 5rem;
+  .login {
+    font-family: $fam2;
+    outline: 1px solid $dark-blue;
+    padding: 0.6rem 6rem;
+    font-size: 1.5rem;
+    border-radius: 2rem;
+    color: $dark-blue;
+    &:hover {
+      color: $orange;
+      outline: none;
+      background: rgba(20, 34, 48, 0.758);
+    }
+  }
+  ////////////////////////////////////////////////
+  #sign-section {
+    * {
+      font-size: 1.5rem;
+      color: $dark-blue;
+    }
+    @include flexRowCenter(1rem);
+    #btn-sign-up {
+      font-family: $fam2;
+      color: $orange;
+      text-decoration: underline;
+      text-underline-offset: 0.5rem;
+      font-size: 1.7rem;
+      &:hover {
+        color: $dark-blue;
+      }
+    }
+  }
+}
+//---------------
+footer {
+  color: $dark-blue;
+  font-family: $fam2;
+  margin-top: 5rem;
+  font-size: 1.3rem;
+  align-self: center;
+  justify-self: flex-end;
+}
+
+@media screen and (max-width: 1060px) {
+  .container {
+    @include flexColumn(4rem);
+    max-height: 50rem;
+  }
+  .app-title {
+    @include flexColumn(3rem);
+
+    align-items: center;
+    padding: 0rem;
+    margin-top: 2rem;
+    .appName {
+      margin: 0rem;
+    }
+    i {
+      // outline: 2px solid rgb(180, 8, 8);
+      height: 10rem;
+      width: 10rem;
+    }
+    .hush {
+      font-size: 3rem;
+      padding-bottom: 0rem;
+    }
+    .zone {
+      height: fit-content;
+      p {
+        flex: 1;
+        font-size: 8rem;
+      }
+    }
+  }
+  #app-text {
+    text-align: center;
+
+    font-size: 1.5rem;
+  }
+  footer {
+    margin-top: 5rem;
+  }
+}
+@media screen and (max-width: 620px) {
+  .app-title {
+    align-items: center;
+    .appName {
+      gap: 0.2em;
+    }
+    .hush {
+      font-size: 1.2rem;
+      align-self: flex-end;
+    }
+    .zone {
+      p {
+        flex: 1;
+        font-size: 3rem;
+      }
+    }
+  }
+  .login-section {
+    @include flexRowCenter(2rem); // gap: 5rem;
+    .login {
+      padding: 0.2rem 2rem;
+      font-size: 1.2rem;
+    }
+    #sign-section {
+      *,
+      #btn-sign-up {
+        font-size: 1.2rem;
+      }
+    }
+  }
+  #app-text {
+    font-size: 1.2rem;
+  }
+  footer {
+    margin-top: 3rem;
+  }
+}

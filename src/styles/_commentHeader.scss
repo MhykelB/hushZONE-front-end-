@@ -1,0 +1,41 @@
+@import "./variables";
+@import "./mixin";
+
+.headerAndText {
+  // margin-left: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  width: 100%;
+  // outline: 2px solid rgb(185, 57, 7);
+}
+.comment-header {
+  // outline: 1px solid black;
+  display: flex;
+  align-items: center;
+  justify-items: space-around;
+  gap: 1rem;
+  font-size: 0.75rem;
+  // padding-right: 2rem;
+  width: 100%;
+  .comment-header-image {
+    max-width: 30px;
+    max-height: 30px;
+  }
+  .username {
+    font-weight: bold;
+  }
+  .comment-header-edit {
+    margin-left: auto;
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+  }
+  .reply-btn {
+    display: flex;
+    gap: 0.3rem;
+    align-items: center;
+    margin-left: auto;
+    // outline: 1px solid $dark-blue;
+  }
+}

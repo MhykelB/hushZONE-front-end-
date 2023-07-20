@@ -1,0 +1,45 @@
+.errorPage {
+  @include flexColumn(2rem);
+  width: 100%;
+  outline: 2px solid black;
+  padding: 10rem 2rem;
+  margin: 0rem auto;
+  align-items: center;
+  height: 100vh;
+  background: $dark-blue;
+  color: $grey;
+  font-family: $fam5;
+  font-weight: 100;
+  p {
+    font-size: 3rem;
+  }
+  span {
+    font-size: 1.5rem;
+  }
+  button {
+    outline: 1px solid $dark-blue;
+    width: 20rem;
+    align-self: center;
+    padding: 0.8rem 0rem;
+    font-size: 1rem;
+    background: $color1;
+    border-radius: 2rem;
+    color: $dark-blue;
+    &:hover {
+      outline: none;
+      background-color: $orange;
+      color: $color3;
+    }
+  }
+  @media screen and (max-width: 600px) {
+    p {
+      font-size: 2rem;
+    }
+    span {
+      font-size: 1rem;
+    }
+  }
+}
+.emoji-angry {
+  size: "20rem";
+}

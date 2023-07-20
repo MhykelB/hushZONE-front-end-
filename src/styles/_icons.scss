@@ -1,0 +1,33 @@
+@import "./variables";
+.icons {
+  color: $dark-grey;
+  &:hover {
+    color: black;
+  }
+  cursor: pointer;
+}
+.arrow-up {
+  @include colorWhite(0.4);
+  &:hover {
+    color: white;
+  }
+}
+.viewReplies {
+  font-size: 0.7rem;
+  color: rgba(104, 101, 101, 1);
+  margin-top: 0rem;
+  margin-bottom: 0.2rem;
+  &:hover {
+    color: rgb(10, 10, 10);
+  }
+}
+.closeReplies {
+  font-size: 0.7rem;
+  color: rgba(104, 101, 101, 1);
+  margin-top: -0.5rem;
+  margin-left: auto;
+  margin-right: 0.8rem;
+  &:hover {
+    color: rgb(10, 10, 10);
+  }
+}

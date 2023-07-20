@@ -4,10 +4,11 @@ import { useNavigate } from "react-router-dom";
 import { loginUi } from "../pages/loginPage";
 
 const loginUrl = "http://localhost:4000/auth/login";
-function Login({ setRequestResponse }) {
+function Login() {
   //get a prop for  user data
+
   const { uiDisplay, userInfo } = useContext(loginUi);
-  const navigate = useNavigate();
+  const Navigate = useNavigate();
   const reqBody = async (url) => {
     try {
       const data = await fetch(url, {
@@ -15,46 +16,62 @@ function Login({ setRequestResponse }) {
         headers: { "Content-type": "application/json" },
         body: JSON.stringify(userInfo),
       });
-
+      uiDisplay.clearInputs();
       if (data.status === 200) {
+        uiDisplay.setSpinner(false);
         const response = await data.json();
         localStorage.setItem("token", JSON.stringify(response.token));
-        setRequestResponse("");
-        navigate("/chatpage");
+        Navigate("/chatpage");
         return;
-      } else if (data.status === 400) {
+      } else if (data.status === 400 || data.status === 401) {
         const response = await data.json();
-        setRequestResponse(response);
+        uiDisplay.showNetworkResponse(response);
+        setTimeout(() => {
+          uiDisplay.showNetworkResponse("");
+          uiDisplay.setSpinner(false);
+        }, 2000);
+      } else {
+        console.log("good");
+        Navigate("/errorPage");
       }
     } catch (error) {
-      navigate("/errorPage");
-      console.log("this is the error" + error);
+      console.log(error);
+      if (error.message === "Failed to fetch") {
+        uiDisplay.showNetworkResponse("Error: check your connection");
+        return setTimeout(() => {
+          Navigate("/errorPage");
+          uiDisplay.showNetworkResponse("");
+          uiDisplay.setSpinner(false);
+        }, 3000);
+      } else {
+        Navigate("/errorPage");
+      }
     }
   };
 
   return (
-    <div className="loginContainer">
-      <button
-        className="btn login"
-        onClick={(e) => {
-          e.preventDefault();
-          if (userInfo.username === "") {
-            uiDisplay.popError((prev) => {
-              return { ...prev, username: false };
-            });
-          }
-          if (userInfo.password === "") {
-            return uiDisplay.popError((prev) => {
-              return { ...prev, password: false };
-            });
-          }
+    <button
+      className="btn-login"
+      onClick={(e) => {
+        e.preventDefault();
+        if (userInfo.username === "") {
+          return uiDisplay.setIsError((prev) => {
+            return { ...prev, username: true };
+          });
+        }
+        if (userInfo.password === "") {
+          return uiDisplay.setIsError((prev) => {
+            return { ...prev, password: true };
+          });
+        }
 
-          reqBody(loginUrl);
-        }}
-      >
-        Log in
-      </button>
-    </div>
+        uiDisplay.setSpinner(true);
+        reqBody(loginUrl);
+        // uiDisplay.clearInputs();
+      }}
+    >
+      Log in
+    </button>
   );
 }
 export default Login;

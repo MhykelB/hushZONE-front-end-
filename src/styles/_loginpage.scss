@@ -1,0 +1,91 @@
+* {
+  margin: 0;
+}
+.form-login-container {
+  // outline: 2px solid green;
+  position: relative;
+  width: fit-content;
+  margin: 10rem auto;
+}
+
+.form-login {
+  @include flexColumn(4rem);
+  // outline: 3px solid green;
+  border-radius: 1rem;
+  width: fit-content;
+  padding: 2rem;
+  font-size: 1.1rem;
+  background: $color1;
+  font-family: $fam2;
+  font-weight: 300;
+  color: $color3;
+  letter-spacing: 0.1rem;
+  .input {
+    // outline: 2px solid black;
+    margin: 0;
+    @include flexColumn(0.2rem);
+    input {
+      background: none;
+      outline: none;
+      border: none;
+      border-bottom: 1px solid $dark-blue;
+      padding: 0.5rem;
+      width: 20rem;
+      font-size: 0.9rem;
+      color: $grey;
+      &:focus {
+        background: none;
+      }
+    }
+    .warning-on {
+      font-size: 1rem;
+      margin-top: 0.2rem;
+      color: rgb(255, 55, 0);
+      width: fit-content;
+      font-family: $fam4;
+    }
+  }
+  .btn-login {
+    outline: 1px solid $dark-blue;
+    width: 100%;
+    align-self: center;
+    padding: 0.6rem 0rem;
+    font-size: 1rem;
+    background: $color1;
+    border-radius: 2rem;
+    color: $dark-blue;
+    &:hover {
+      outline: none;
+      background-color: $orange;
+      color: $color3;
+    }
+  }
+  .login-section {
+    @include flexColumn(1rem);
+    width: 100%;
+    #sign-section {
+      * {
+        font-size: 1rem;
+      }
+      #btn-sign-up {
+        font-size: 1rem;
+      }
+      #btn-login-page {
+        font-family: $fam2;
+        color: $orange;
+        cursor: pointer;
+        // text-decoration: underline;
+        // text-underline-offset: 0.5rem;
+        font-size: 1.2rem;
+        &:hover {
+          color: $dark-blue;
+        }
+      }
+    }
+  }
+}
+.spinner {
+  position: absolute;
+  top: 8.5rem;
+  right: 10rem;
+}

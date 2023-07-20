@@ -1,22 +1,15 @@
 import React from "react";
 import { useContext } from "react";
 import { CommentsProvider } from "../pages/chatpage";
-import { commentContext } from "./chatsWindow";
+import { commentContext } from "./commentsWindow";
+import { localCommentProps } from "./chatsWindowComponents/textsDisplayFormat";
+import { updateCommentList } from "../customHooks/updateCommentList";
+import { IconContext } from "react-icons";
+import { AiOutlineDelete } from "react-icons/ai";
 
 // const commentsUrl = "http://localhost:4000/api/v1/comments";
-
-// const fetchAndUpdateComments = async (url) => {
-//   const token = JSON.parse(localStorage.getItem("token"));
-//   const data = await fetch(url, {
-//     method: "GET",
-//     headers: { authorization: `Bearer ${token}` },
-//   });
-//   const chatArray = await data.json();
-//   // updateComments.setAllComments(chatArray);
-//   return chatArray;
-// };
 export const SendCommentBtn = ({ userText, clearInput }) => {
-  const { allCommentsAndUserDetails, setAllComments } =
+  const { commentsList, setCommentsList, showNetworkResponse } =
     useContext(CommentsProvider);
   const token = JSON.parse(localStorage.getItem("token"));
   const postUrl = "http://localhost:4000/api/v1/comments/postcomment";
@@ -30,30 +23,39 @@ export const SendCommentBtn = ({ userText, clearInput }) => {
         },
         body: JSON.stringify({ text: userText }),
       });
-      const addedCommentObj = await response.json();
+      const responseMsg = await response.json();
       if (response.status === 201) {
-        const newChatArray = allCommentsAndUserDetails.allComments.concat([
-          addedCommentObj,
-        ]);
-        setAllComments((prev) => {
-          return { ...prev, allComments: newChatArray };
-        });
+        const newChatArray = commentsList.concat([responseMsg]);
+        setCommentsList(newChatArray);
+        showNetworkResponse("secret added");
+        setTimeout(() => {
+          showNetworkResponse("");
+        }, 2000);
+      } else {
+        showNetworkResponse(responseMsg);
+        setTimeout(() => {
+          showNetworkResponse("");
+        }, 2000);
       }
     } catch (error) {
+      error.message && showNetworkResponse(error.message);
+      setTimeout(() => {
+        showNetworkResponse("");
+      }, 2000);
       console.log(error);
     }
   };
   return (
     <button
-      className="comment-send send"
+      className="comment-send"
+      disabled={userText.trim().length > 0 ? false : true}
+      // style={{
+      //   disabled: userText.trim().length > 0 ? true : false,
+      // }}
       onClick={(e) => {
         e.preventDefault();
-        if (userText.trim().length > 0) {
-          postText();
-          clearInput("");
-        } else {
-          console.log("text cant be empty");
-        }
+        postText();
+        clearInput("");
       }}
     >
       SEND
@@ -62,7 +64,7 @@ export const SendCommentBtn = ({ userText, clearInput }) => {
 };
 
 export const SendReplyBtn = ({ replyBody, setReplyInput }) => {
-  const { allCommentsAndUserDetails, setAllComments, setShowResponseBox } =
+  const { commentsList, setCommentsList, showNetworkResponse } =
     useContext(CommentsProvider);
   const { commentID } = useContext(commentContext);
   const token = JSON.parse(localStorage.getItem("token"));
@@ -78,34 +80,34 @@ export const SendReplyBtn = ({ replyBody, setReplyInput }) => {
         body: JSON.stringify(replyBody),
       });
       const newObj = await response.json();
-      const newArray = allCommentsAndUserDetails.allComments.map((comment) => {
-        if (comment._id === newObj._id) {
-          return newObj;
-        } else {
-          return comment;
-        }
-      });
-      setAllComments((prev) => {
-        return { ...prev, allComments: newArray };
-      });
+      if (response.status === 200) {
+        updateCommentList(newObj, commentsList, setCommentsList);
+        showNetworkResponse("reply added");
+        setTimeout(() => {
+          showNetworkResponse("");
+        }, 2000);
+      } else {
+        showNetworkResponse(newObj);
+        setTimeout(() => {
+          showNetworkResponse("");
+        }, 2000);
+      }
     } catch (error) {
+      error.message && showNetworkResponse(error.message);
+      setTimeout(() => {
+        showNetworkResponse("");
+      }, 2000);
       console.log(error);
     }
   };
   return (
     <button
-      className="comment-send send"
+      className="comment-send"
+      disabled={replyBody.text.trim().length > 0 ? false : true}
       onClick={(e) => {
         e.preventDefault();
-        if (replyBody.text.trim().length > 0) {
-          setShowResponseBox((prev) => {
-            return `${prev} a`;
-          });
-          setReplyInput("");
-          sendReply();
-        } else {
-          console.log("text cant be empty");
-        }
+        setReplyInput("");
+        sendReply();
       }}
     >
       SEND
@@ -113,16 +115,13 @@ export const SendReplyBtn = ({ replyBody, setReplyInput }) => {
   );
 };
 
-export const EditBtn = ({ body, setReplyInput, isAReply, commentID }) => {
-  console.log({ body, setReplyInput, isAReply, commentID });
-  const { allCommentsAndUserDetails, setAllComments, setShowResponseBox } =
-    useContext(CommentsProvider);
+export const EditBtn = ({ body, setReplyInput }) => {
+  const { objNature, localCommentID } = useContext(localCommentProps);
+  const { commentsList, setCommentsList } = useContext(CommentsProvider);
   const token = JSON.parse(localStorage.getItem("token"));
-  const editCommentUrl = `http://localhost:4000/api/v1/comments/updatecomment/${commentID}`;
-  const editReplyUrl = `http://localhost:4000/api/v1/comments/updatereply/${commentID}`;
-  console.log(isAReply);
-
-  const url = isAReply ? editReplyUrl : editCommentUrl;
+  const editCommentUrl = `http://localhost:4000/api/v1/comments/updatecomment/${localCommentID}`;
+  const editReplyUrl = `http://localhost:4000/api/v1/comments/updatereply/${localCommentID}`;
+  const url = objNature === "comment" ? editCommentUrl : editReplyUrl;
   const sendEdit = async () => {
     try {
       const response = await fetch(url, {
@@ -134,50 +133,34 @@ export const EditBtn = ({ body, setReplyInput, isAReply, commentID }) => {
         body: JSON.stringify(body),
       });
       const newObj = await response.json();
-      console.log(newObj);
-      const newArray = allCommentsAndUserDetails.allComments.map((comment) => {
-        if (comment._id === newObj._id) {
-          return newObj;
-        } else {
-          return comment;
-        }
-      });
-      setAllComments((prev) => {
-        return { ...prev, allComments: newArray };
-      });
+      updateCommentList(newObj, commentsList, setCommentsList);
     } catch (error) {
       console.log(error);
     }
   };
   return (
     <button
-      className="comment-send send"
+      className="comment-send"
+      disabled={body.text.trim().length ? false : true}
       onClick={(e) => {
         e.preventDefault();
-        if (body.text.trim().length > 0) {
-          body.text = `Edit:  \n ${body.text}`;
-          setShowResponseBox((prev) => {
-            return `${prev} a`;
-          });
-          setReplyInput("");
-          sendEdit();
-        } else {
-          console.log("text cant be empty");
-        }
+        body.text = `Edit:  \n ${body.text}`;
+        setReplyInput("");
+        sendEdit();
       }}
     >
       EDIT
     </button>
   );
 };
-export const LikeAndUnlikeBtn = ({ islike, textNature, textID }) => {
-  const { allCommentsAndUserDetails, setAllComments } =
+export const LikeAndUnlikeBtn = () => {
+  const { objNature, localCommentID, islike } = useContext(localCommentProps);
+  const { commentsList, setCommentsList, userInfo } =
     useContext(CommentsProvider);
-  // const { commentID } = useContext(commentContext);
-  const userID = allCommentsAndUserDetails.user.userID;
+  const userID = userInfo.userID;
   const token = JSON.parse(localStorage.getItem("token"));
-  const url = `http://localhost:4000/api/v1/comments/like/${textID}`;
-  const body = { userID: userID, duty: textNature };
+  const url = `http://localhost:4000/api/v1/comments/like/${localCommentID}`;
+  const body = { userID: userID, duty: objNature };
   const sendlike = async () => {
     try {
       const response = await fetch(url, {
@@ -189,16 +172,7 @@ export const LikeAndUnlikeBtn = ({ islike, textNature, textID }) => {
         body: JSON.stringify(body),
       });
       const newObj = await response.json();
-      const newArray = allCommentsAndUserDetails.allComments.map((comment) => {
-        if (comment._id === newObj._id) {
-          return newObj;
-        } else {
-          return comment;
-        }
-      });
-      setAllComments((prev) => {
-        return { ...prev, allComments: newArray };
-      });
+      updateCommentList(newObj, commentsList, setCommentsList);
     } catch (error) {
       console.log(error);
     }
@@ -211,68 +185,80 @@ export const LikeAndUnlikeBtn = ({ islike, textNature, textID }) => {
       }}
     >
       {islike ? (
-        <img src="./images/icon-like.svg" alt="like" />
+        <img src="./images/icon-like.svg" alt="like" className="icon-like" />
       ) : (
-        <img src="./images/icon-unlike.svg" alt="unlike" />
+        <img
+          src="./images/icon-unlike.svg"
+          alt="unlike"
+          className="icon-like"
+        />
       )}
     </button>
   );
 };
 
-export const DeleteBtn = ({ url }) => {
-  const { allCommentsAndUserDetails, setAllComments } =
+export const DeleteBtn = () => {
+  const { objNature, localCommentID } = useContext(localCommentProps);
+  const { commentsList, setCommentsList, showNetworkResponse } =
     useContext(CommentsProvider);
+  const deleteCommentUrl = `http://localhost:4000/api/v1/comments/${localCommentID}`;
+  const deleteReplyUrl = `http://localhost:4000/api/v1/comments/deletereply/${localCommentID}`;
+  const url = objNature === "comment" ? deleteCommentUrl : deleteReplyUrl;
   const token = JSON.parse(localStorage.getItem("token"));
-  // const url = `http://localhost:4000/api/v1/comments/${commentID}`;
+  // const url = `http://localhost:4000/api/v1/comments/${localCommentID}`;
   const deletefunc = async () => {
-    const data = await fetch(url, {
-      method: "DELETE",
-      headers: {
-        authorization: `Bearer ${token}`,
-      },
-    });
-
-    const response = await data.json();
-    console.log(response);
-
-    if (data.status === 200) {
-      console.log(response.message);
-      if (response.type === "comment") {
-        const newObj = response.comment;
-        const newArray = allCommentsAndUserDetails.allComments.filter(
-          (comment) => {
+    try {
+      const data = await fetch(url, {
+        method: "DELETE",
+        headers: {
+          authorization: `Bearer ${token}`,
+        },
+      });
+      const response = await data.json();
+      if (data.status === 200) {
+        if (response.type === "comment") {
+          const newObj = response.comment; // maybe return the comment_.id from the BE instead of th whole object
+          const newArray = commentsList.filter((comment) => {
             return comment._id !== newObj._id;
-          }
-        );
-        return setAllComments((prev) => {
-          return { ...prev, allComments: newArray };
-        });
-      } else if (response.type === "reply") {
-        const newObj = response.comment;
-        const newArray = allCommentsAndUserDetails.allComments.map(
-          (comment) => {
-            if (comment._id === newObj._id) {
-              return newObj;
-            } else {
-              return comment;
-            }
-          }
-        );
-        setAllComments((prev) => {
-          return { ...prev, allComments: newArray };
-        });
+          });
+          setCommentsList(newArray);
+          showNetworkResponse("comment deleted");
+          setTimeout(() => {
+            showNetworkResponse("");
+          }, 2000);
+        } else if (response.type === "reply") {
+          const newObj = response.comment;
+          updateCommentList(newObj, commentsList, setCommentsList);
+          showNetworkResponse("comment deleted");
+          setTimeout(() => {
+            showNetworkResponse("");
+          }, 2000);
+        }
+      } else {
+        showNetworkResponse(response);
+        setTimeout(() => {
+          showNetworkResponse("");
+        }, 2000);
       }
+    } catch (error) {
+      error.message && showNetworkResponse(error.message);
+      setTimeout(() => {
+        showNetworkResponse("");
+      }, 2000);
+      console.log(error);
     }
   };
   return (
-    <button
-      className="btn-delete"
+    <div
+      className="icon-delete"
       onClick={(e) => {
         e.preventDefault();
         deletefunc();
       }}
     >
-      Delete
-    </button>
+      <IconContext.Provider value={{ className: "icons" }}>
+        <AiOutlineDelete size={20} />
+      </IconContext.Provider>
+    </div>
   );
 };

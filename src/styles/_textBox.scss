@@ -1,0 +1,37 @@
+@import "./variables";
+@import "./mixin";
+
+.textArea {
+  margin: 0rem auto;
+  margin-top: 1rem;
+  display: flex;
+  align-items: flex-start;
+  gap: 1em;
+  padding: 0.5rem 1rem;
+  border-radius: 0.3rem;
+  width: 38rem;
+  background: #eab010;
+
+  textarea {
+    width: 100%;
+    border: none;
+    outline: none;
+    resize: none;
+    padding: 1em;
+    border-radius: 0.4em;
+    background: $dark-blue;
+    color: $grey;
+  }
+
+  .comment-header-image {
+    align-self: center;
+    width: 4rem;
+    height: 4rem;
+  }
+}
+textarea::-webkit-scrollbar-thumb {
+  background-color: $grey;
+}
+textarea::-webkit-scrollbar {
+  width: 0.3em;
+}

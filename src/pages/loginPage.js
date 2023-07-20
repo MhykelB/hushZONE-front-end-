@@ -1,72 +1,103 @@
 import React from "react";
-import { useState } from "react";
 import Login from "../components/login";
-import RequestStatus from "../components/requestStatus";
+import { Link } from "react-router-dom";
+import { Spinner, RequestStatus } from "../components/modals";
+import { useSpinnerControl } from "../customHooks/spinnerControl";
+import { useUserCredentials } from "../customHooks/userCredentials";
+import { useInputErrorDisplay } from "../customHooks/inputError";
+import { useConnectionResponseDisplay } from "../customHooks/connectionResponseDisplay";
 
 export const loginUi = React.createContext();
 function LoginPage() {
-  const [username, setUserName] = useState("");
-  const [password, setPassWord] = useState("");
-  const [requestResponse, setRequestResponse] = useState("");
-  const [isError, setIsError] = useState({ username: true, password: true });
-  const userInfo = {
+  const {
     username,
+    setUserName,
     password,
-  };
+    setPassWord,
+    userInfo,
+    clearInputs,
+  } = useUserCredentials();
+  const { spinner, setSpinner } = useSpinnerControl();
+  const { isError, setIsError } = useInputErrorDisplay();
+  const { requestResponse, showNetworkResponse } =
+    useConnectionResponseDisplay();
   const uiDisplay = {
-    clearInputs: () => {
-      setUserName("");
-      setPassWord("");
-    },
-    popError: setIsError,
+    clearInputs,
+    setIsError,
+    showNetworkResponse,
+    setSpinner,
   };
   return (
-    <loginUi.Provider value={{ userInfo, uiDisplay }}>
-      <>
-        <div className="form-login">
-          <form>
-            <div className="input">
-              <label htmlFor="username">username</label>
-              <input
-                type="text"
-                name="username"
-                placeholder="enter username"
-                value={username}
-                onChange={(e) => {
-                  setIsError((prev) => {
-                    return { ...prev, username: true };
-                  });
-                  setUserName(e.target.value);
+    <loginUi.Provider value={{ userInfo, uiDisplay, spinner }}>
+      <div className="form-login-container">
+        <div
+          className="form-login"
+          style={{
+            pointerEvents: spinner ? "none" : "auto",
+            opacity: spinner ? 0.5 : 1,
+          }}
+        >
+          <div className="input">
+            <label htmlFor="username">username</label>
+            <input
+              autofocus="autofocus"
+              type="text"
+              name="username"
+              placeholder="enter username"
+              value={username}
+              onChange={(e) => {
+                setIsError((prev) => {
+                  return { ...prev, username: false };
+                });
+                setUserName(e.target.value);
+              }}
+            />
+            <p
+              className="warning-on"
+              style={{ opacity: isError.username ? 1 : 0 }}
+            >
+              *field cannot be empty
+            </p>
+          </div>
+          <div className="input">
+            <label htmlFor="password">password</label>
+            <input
+              type="text"
+              name="password"
+              placeholder="enter password"
+              value={password}
+              onChange={(e) => {
+                setIsError((prev) => {
+                  return { ...prev, password: false };
+                });
+                setPassWord(e.target.value);
+              }}
+            />
+            <p
+              className="warning-on"
+              style={{ opacity: isError.password ? 1 : 0 }}
+            >
+              *field cannot be empty
+            </p>
+          </div>
+          <div className="login-section">
+            <Login />
+            <div id="sign-section">
+              <p>New User?</p>
+              <Link
+                to="/signUp"
+                onClick={() => {
+                  console.log("clicked");
                 }}
-              />
-              {!isError.username && (
-                <p className="warning">field cannot be empty</p>
-              )}
+              >
+                <button id="btn-sign-up">Sign up</button>
+              </Link>
             </div>
-            <div className="input">
-              <label htmlFor="password">password</label>
-              <input
-                type="text"
-                name="password"
-                placeholder="enter password"
-                value={password}
-                onChange={(e) => {
-                  setIsError((prev) => {
-                    return { ...prev, password: true };
-                  });
-                  setPassWord(e.target.value);
-                }}
-              />
-              {!isError.password && (
-                <p className="warning">field cannot be empty</p>
-              )}
-            </div>
-
-            <Login setRequestResponse={setRequestResponse} />
-          </form>
+          </div>
         </div>
         {requestResponse !== "" && <RequestStatus message={requestResponse} />}
-      </>
+        <Spinner loadingState={spinner} classID={"loginPageSpinner"} />
+      </div>
     </loginUi.Provider>
   );
 }

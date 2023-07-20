@@ -1,0 +1,16 @@
+@mixin flexRowCenter($gap) {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: $gap;
+}
+
+@mixin flexColumn($gap) {
+  display: flex;
+  flex-direction: column;
+  // align-items: flex-start;
+  gap: $gap;
+}
+@mixin colorWhite($opacity) {
+  color: rgba(255, 255, 255, $opacity);
+}

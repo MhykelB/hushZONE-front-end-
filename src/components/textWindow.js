@@ -7,17 +7,16 @@ import { EditBtn } from "./requests";
 import { LikeAndUnlikeBtn } from "./requests";
 // import { commentContext } from "./chatsWindow";
 
-export const TextWindow = ({ commentObj, user }) => {
+export const TextWindow = ({ commentObj, currentUser }) => {
   const creator = commentObj.created_by;
+  const likes = commentObj.likes.length;
   const deleteCommentUrl = `http://localhost:4000/api/v1/comments/${commentObj._id}`;
   const deleteReplyUrl = `http://localhost:4000/api/v1/comments/deletereply/${commentObj._id}`;
   const { setShowResponseBox, userInfo } = useContext(CommentsProvider);
-  const likes = commentObj.likes.length;
   const toggle = useRef(false);
-  const likeArray = commentObj.likes;
-  const islike = likeArray.includes(userInfo.userID) ? true : false;
+  const islike = commentObj.likes.includes(userInfo.userID) ? true : false;
   const isAReply = commentObj.replied_to ? true : false;
-  const textNature = commentObj.type;
+  const objNature = commentObj.type;
   // console.log(textNature);
   return (
     <>
@@ -25,7 +24,7 @@ export const TextWindow = ({ commentObj, user }) => {
         <section className="comment-like-bar">
           <LikeAndUnlikeBtn
             islike={islike}
-            textNature={textNature}
+            textNature={objNature}
             textID={commentObj._id}
           />
           <div className="comment-likes">{likes}</div>
@@ -39,12 +38,12 @@ export const TextWindow = ({ commentObj, user }) => {
             />
             <p className="comment-header-username">{commentObj.created_by}</p>
             <p className="comment-header-time">{commentObj.createdAt}</p>
-            {commentObj.replied_to && (
+            {objNature === "reply" && (
               <p>replied - to {commentObj.replied_to}</p>
             )}
-            {user === commentObj.created_by ? (
+            {currentUser === commentObj.created_by ? (
               <div className="comment-header-edit">
-                {!commentObj.replied_to ? (
+                {objNature === "comment" ? (
                   <DeleteBtn url={deleteCommentUrl} />
                 ) : (
                   <DeleteBtn url={deleteReplyUrl} />
@@ -86,16 +85,16 @@ export const TextWindow = ({ commentObj, user }) => {
           <p className="comment-note text">{commentObj.text}</p>
         </section>
       </div>
-      {user !== commentObj.created_by ? (
+      {currentUser !== commentObj.created_by ? (
         <ResponseBox
-          userimg={user}
+          userimg={currentUser}
           toggle={toggle}
           creator={creator}
           duty={"forReply"}
         />
       ) : (
         <ResponseBox
-          userimg={user}
+          userimg={currentUser}
           toggle={toggle}
           creator={creator}
           duty={"forEdit"}

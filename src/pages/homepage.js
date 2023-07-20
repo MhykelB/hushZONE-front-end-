@@ -1,5 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { BsEmojiNeutral } from "react-icons/bs";
+import { IconContext } from "react-icons";
 // import { useState, useEffect } from "react";
 
 // const loginFunc = async () => {
@@ -16,24 +18,35 @@ import { Link } from "react-router-dom";
 function Homepage(props) {
   return (
     <div className="container">
-      <section className="header-bar">
-        <img src="" alt="Applogo" />
-        <h1 className="appTitle">{props.appTitle}</h1>
+      <section className="app-title">
+        <i className="icon">
+          <BsEmojiNeutral size={"100%"} color={" rgba(255, 165, 0, .8)"} />
+        </i>
+        <div className="appName">
+          <h1 className="hush">{props.appTitle}</h1>
+          <h2 className="zone">
+            <p>zone</p>
+          </h2>
+        </div>
       </section>
       <p id="app-text">{props.text}</p>
       <section className="login-section">
-        <div className="btn login">
-          <Link to="/login">
-            <button>log in</button>
-          </Link>
-        </div>
         <div id="sign-section">
           <p>New User?</p>
-          <Link to="/signUp">
-            <button className="btn-sign-up">Sign up</button>
+          <Link
+            to="/signUp"
+            onClick={() => {
+              console.log("cliked");
+            }}
+          >
+            <button id="btn-sign-up">Sign up</button>
           </Link>
         </div>
+        <Link to="/login">
+          <button className="btn login">log in</button>
+        </Link>
       </section>
+      <footer> &copy; 2023 </footer>
     </div>
   );
 }

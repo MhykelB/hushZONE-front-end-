@@ -1,24 +1,22 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { BsFillEmojiAngryFill } from "react-icons/bs";
+import { AiOutlineAlipayCircle } from "react-icons/ai";
+import { IconContext } from "react-icons";
 
-export function ErrorPage() {
+export function DefaultErrorPage() {
   return (
-    <>
-      <section className="errorPage">
-        <div> OOps! something went wrong</div>
-        <p className="error-msg">please check your network connection </p>
-        <Link to="/">
-          <button className="back-btn">back to Home</button>
-        </Link>
-      </section>
-    </>
-  );
-}
+    <div className="errorPage">
+      <p className="error-code"> Error: 500</p>
 
-export function defaultErrorPage() {
-  return (
-    <div>
-      <h1>Unathorized access</h1>
+      <BsFillEmojiAngryFill size={"30rem"} className="emoji angry" />
+      <p>
+        OOps !!!
+        <span> something went wrong</span>{" "}
+      </p>
+      <Link to="/login">
+        <button className="back-btn">back to login</button>
+      </Link>
     </div>
   );
 }

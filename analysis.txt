@@ -1,0 +1,14 @@
+//sign SignUp
+when there is a duplicate error i want to show user already exists and go back to the sign up page
+when there is a network error i want to say check your connection and go back to the sign up page or just show a brief modal for like 2 seconds saying network error connection
+spinner in between all these
+
+// loging in 
+
+if user doesnt exist 
+i want to pop an error that says, user doesnt exist and an arrow that goes back to the log ioiin page
+if no network i want to say check your connection and go back to login page
+soinner in between all these
+//
+
+on chat page i want to implement a sending floating object on each request which changes to message sent or network connection error or any other error, if error is jwt expired i want to say session expired and go back to the login page

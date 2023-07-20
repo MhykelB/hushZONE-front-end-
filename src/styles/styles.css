@@ -1,0 +1,697 @@
+@import url("https://fonts.googleapis.com/css2?family=Dancing+Script&family=Montserrat:wght@100;300;400&family=Open+Sans:wght@300;400&family=Roboto+Condensed:wght@300&family=Rubik:wght@300;400;500&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Dancing+Script&family=Montserrat:wght@100;300;400&family=Open+Sans:wght@300;400&family=Roboto+Condensed:wght@300&family=Rubik:wght@300;400;500&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Dancing+Script&family=Montserrat:wght@100;300;400&family=Open+Sans:wght@300;400&family=Roboto+Condensed:wght@300&family=Rubik:wght@300;400;500&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Dancing+Script&family=Montserrat:wght@100;300;400&family=Open+Sans:wght@300;400&family=Roboto+Condensed:wght@300&family=Rubik:wght@300;400;500&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Dancing+Script&family=Montserrat:wght@100;300;400&family=Open+Sans:wght@300;400&family=Roboto+Condensed:wght@300&family=Rubik:wght@300;400;500&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Dancing+Script&family=Montserrat:wght@100;300;400&family=Open+Sans:wght@300;400&family=Roboto+Condensed:wght@300&family=Rubik:wght@300;400;500&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Dancing+Script&family=Montserrat:wght@100;300;400&family=Open+Sans:wght@300;400&family=Roboto+Condensed:wght@300&family=Rubik:wght@300;400;500&display=swap");
+body {
+  margin: 0;
+  background: white;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+  margin: 0rem auto;
+  margin-bottom: 0rem;
+  width: 90%;
+  padding-bottom: 20rem;
+  background: rgb(55, 79, 96);
+  height: 50rem;
+}
+
+.app-title {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 5rem;
+  align-items: flex-end;
+  padding-left: 5rem;
+}
+.app-title i {
+  height: 300px;
+  width: 300px;
+}
+.app-title .appName {
+  margin-left: auto;
+  display: flex;
+  align-items: flex-end;
+  gap: 1rem;
+}
+.app-title .hush {
+  color: white;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 100;
+  font-size: 7rem;
+  padding-bottom: 1rem;
+}
+.app-title .zone {
+  height: 28rem;
+  margin-left: auto;
+  padding: 0rem 1rem;
+  display: flex;
+  align-items: flex-end;
+  background: rgb(20, 34, 48);
+  color: rgb(255, 165, 0);
+}
+.app-title .zone p {
+  flex: 1;
+  font-size: 12rem;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 100;
+}
+
+#app-text {
+  align-self: center;
+  font-size: 2rem;
+  font-family: "Dancing Script", cursive;
+  color: rgb(198, 193, 193);
+}
+
+.login-section {
+  font-family: "Roboto Condensed", sans-serif;
+  align-self: center;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 5rem;
+}
+.login-section .login {
+  font-family: "Roboto Condensed", sans-serif;
+  outline: 1px solid rgb(20, 34, 48);
+  padding: 0.6rem 6rem;
+  font-size: 1.5rem;
+  border-radius: 2rem;
+  color: rgb(20, 34, 48);
+}
+.login-section .login:hover {
+  color: rgb(255, 165, 0);
+  outline: none;
+  background: rgba(20, 34, 48, 0.758);
+}
+.login-section #sign-section {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 1rem;
+}
+.login-section #sign-section * {
+  font-size: 1.5rem;
+  color: rgb(20, 34, 48);
+}
+.login-section #sign-section #btn-sign-up {
+  font-family: "Roboto Condensed", sans-serif;
+  color: rgb(255, 165, 0);
+  text-decoration: underline;
+  text-underline-offset: 0.5rem;
+  font-size: 1.7rem;
+}
+.login-section #sign-section #btn-sign-up:hover {
+  color: rgb(20, 34, 48);
+}
+
+footer {
+  color: rgb(20, 34, 48);
+  font-family: "Roboto Condensed", sans-serif;
+  margin-top: 5rem;
+  font-size: 1.3rem;
+  align-self: center;
+  justify-self: flex-end;
+}
+
+@media screen and (max-width: 1060px) {
+  .container {
+    display: flex;
+    flex-direction: column;
+    gap: 4rem;
+    max-height: 50rem;
+  }
+  .app-title {
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+    align-items: center;
+    padding: 0rem;
+    margin-top: 2rem;
+  }
+  .app-title .appName {
+    margin: 0rem;
+  }
+  .app-title i {
+    height: 10rem;
+    width: 10rem;
+  }
+  .app-title .hush {
+    font-size: 3rem;
+    padding-bottom: 0rem;
+  }
+  .app-title .zone {
+    height: -moz-fit-content;
+    height: fit-content;
+  }
+  .app-title .zone p {
+    flex: 1;
+    font-size: 8rem;
+  }
+  #app-text {
+    text-align: center;
+    font-size: 1.5rem;
+  }
+  footer {
+    margin-top: 5rem;
+  }
+}
+@media screen and (max-width: 620px) {
+  .app-title {
+    align-items: center;
+  }
+  .app-title .appName {
+    gap: 0.2em;
+  }
+  .app-title .hush {
+    font-size: 1.2rem;
+    align-self: flex-end;
+  }
+  .app-title .zone p {
+    flex: 1;
+    font-size: 3rem;
+  }
+  .login-section {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 2rem;
+  }
+  .login-section .login {
+    padding: 0.2rem 2rem;
+    font-size: 1.2rem;
+  }
+  .login-section #sign-section *,
+  .login-section #sign-section #btn-sign-up {
+    font-size: 1.2rem;
+  }
+  #app-text {
+    font-size: 1.2rem;
+  }
+  footer {
+    margin-top: 3rem;
+  }
+}
+* {
+  margin: 0;
+}
+
+.form-login-container {
+  position: relative;
+  width: -moz-fit-content;
+  width: fit-content;
+  margin: 10rem auto;
+}
+
+.form-login {
+  display: flex;
+  flex-direction: column;
+  gap: 4rem;
+  border-radius: 1rem;
+  width: -moz-fit-content;
+  width: fit-content;
+  padding: 2rem;
+  font-size: 1.1rem;
+  background: rgb(55, 79, 96);
+  font-family: "Roboto Condensed", sans-serif;
+  font-weight: 300;
+  color: rgb(239, 242, 242);
+  letter-spacing: 0.1rem;
+}
+.form-login .input {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+.form-login .input input {
+  background: none;
+  outline: none;
+  border: none;
+  border-bottom: 1px solid rgb(20, 34, 48);
+  padding: 0.5rem;
+  width: 20rem;
+  font-size: 0.9rem;
+  color: rgb(198, 193, 193);
+}
+.form-login .input input:focus {
+  background: none;
+}
+.form-login .input .warning-on {
+  font-size: 1rem;
+  margin-top: 0.2rem;
+  color: rgb(255, 55, 0);
+  width: -moz-fit-content;
+  width: fit-content;
+  font-family: "Open Sans", sans-serif;
+}
+.form-login .btn-login {
+  outline: 1px solid rgb(20, 34, 48);
+  width: 100%;
+  align-self: center;
+  padding: 0.6rem 0rem;
+  font-size: 1rem;
+  background: rgb(55, 79, 96);
+  border-radius: 2rem;
+  color: rgb(20, 34, 48);
+}
+.form-login .btn-login:hover {
+  outline: none;
+  background-color: rgb(255, 165, 0);
+  color: rgb(239, 242, 242);
+}
+.form-login .login-section {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  width: 100%;
+}
+.form-login .login-section #sign-section * {
+  font-size: 1rem;
+}
+.form-login .login-section #sign-section #btn-sign-up {
+  font-size: 1rem;
+}
+.form-login .login-section #sign-section #btn-login-page {
+  font-family: "Roboto Condensed", sans-serif;
+  color: rgb(255, 165, 0);
+  cursor: pointer;
+  font-size: 1.2rem;
+}
+.form-login .login-section #sign-section #btn-login-page:hover {
+  color: rgb(20, 34, 48);
+}
+
+.spinner {
+  position: absolute;
+  top: 8.5rem;
+  right: 10rem;
+}
+
+.requestStatus,
+.requestStatus-chatPage {
+  align-self: center;
+  background: rgb(37, 36, 36);
+  border-radius: 0.3rem;
+  color: rgb(239, 242, 242);
+  padding: 0.3rem 1rem;
+  margin: 0rem 4rem;
+  position: absolute;
+  top: 0.3rem;
+  left: 0.2rem;
+  right: 0.2rem;
+}
+.requestStatus h3,
+.requestStatus-chatPage h3 {
+  font-size: 0.8rem;
+  text-align: center;
+  letter-spacing: 0.05rem;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 300;
+}
+
+.requestStatus-chatPage {
+  background: rgb(20, 34, 48);
+  width: 20%;
+  padding: 0.5rem;
+  top: 0rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.loginPageSpinner {
+  position: absolute;
+  top: 13rem;
+  right: 10rem;
+  left: 10rem;
+}
+
+.chatPageSpinner {
+  outline: 2px solid black;
+  position: absolute;
+  top: 20rem;
+  right: 15rem;
+}
+
+.errorPage {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  width: 100%;
+  outline: 2px solid black;
+  padding: 10rem 2rem;
+  margin: 0rem auto;
+  align-items: center;
+  height: 100vh;
+  background: rgb(20, 34, 48);
+  color: rgb(198, 193, 193);
+  font-family: "Montserrat", sans-serif;
+  font-weight: 100;
+}
+.errorPage p {
+  font-size: 3rem;
+}
+.errorPage span {
+  font-size: 1.5rem;
+}
+.errorPage button {
+  outline: 1px solid rgb(20, 34, 48);
+  width: 20rem;
+  align-self: center;
+  padding: 0.8rem 0rem;
+  font-size: 1rem;
+  background: rgb(55, 79, 96);
+  border-radius: 2rem;
+  color: rgb(20, 34, 48);
+}
+.errorPage button:hover {
+  outline: none;
+  background-color: rgb(255, 165, 0);
+  color: rgb(239, 242, 242);
+}
+@media screen and (max-width: 600px) {
+  .errorPage p {
+    font-size: 2rem;
+  }
+  .errorPage span {
+    font-size: 1rem;
+  }
+}
+
+.emoji-angry {
+  size: "20rem";
+}
+
+.icons {
+  color: rgb(65, 63, 63);
+  cursor: pointer;
+}
+.icons:hover {
+  color: black;
+}
+
+.arrow-up {
+  color: rgba(255, 255, 255, 0.4);
+}
+.arrow-up:hover {
+  color: white;
+}
+
+.viewReplies {
+  font-size: 0.7rem;
+  color: rgb(104, 101, 101);
+  margin-top: 0rem;
+  margin-bottom: 0.2rem;
+}
+.viewReplies:hover {
+  color: rgb(10, 10, 10);
+}
+
+.closeReplies {
+  font-size: 0.7rem;
+  color: rgb(104, 101, 101);
+  margin-top: -0.5rem;
+  margin-left: auto;
+  margin-right: 0.8rem;
+}
+.closeReplies:hover {
+  color: rgb(10, 10, 10);
+}
+
+.comment-send:disabled {
+  outline: none;
+  padding: 0rem 1rem;
+  background: gray;
+  color: rgb(198, 193, 193);
+  opacity: 0.8;
+}
+.comment-send:disabled:hover {
+  color: rgb(198, 193, 193);
+  font-size: 0.7rem;
+  cursor: default;
+}
+
+.comment-send {
+  outline: 1px solid black;
+  font-size: 0.7rem;
+  height: 2rem;
+  padding: 0rem 1rem;
+  background: rgb(20, 34, 48);
+  color: rgb(198, 193, 193);
+  border-radius: 1rem;
+  transition: font-size 0.2s;
+}
+.comment-send:hover {
+  font-size: 0.8rem;
+  color: rgb(255, 165, 0);
+  cursor: pointer;
+}
+
+.delete-btn:hover {
+  color: rgb(65, 63, 63);
+}
+
+.chatWindowContainer {
+  background: rgb(20, 34, 48);
+  width: -moz-fit-content;
+  width: fit-content;
+  margin: 0rem auto;
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 1rem;
+  padding-top: 0rem;
+  min-height: 100vmin;
+}
+.chatWindowContainer .nav-bar {
+  min-width: 100%;
+  font-family: "Open Sans", sans-serif;
+  font-weight: 100;
+  display: flex;
+  align-items: center;
+  background: rgba(229, 226, 226, 0.2);
+  margin: 0rem auto;
+  margin-bottom: 0.5rem;
+  padding: 0.5rem 1rem;
+  border-radius: 0rem 0rem 0.7rem 0.7rem;
+  color: white;
+  font-size: 1.2rem;
+}
+.chatWindowContainer .nav-bar .greeting {
+  flex: 1;
+  color: rgb(255, 165, 0);
+}
+.chatWindowContainer .nav-bar .greeting span {
+  font-size: 1rem;
+  color: rgb(198, 193, 193);
+}
+.chatWindowContainer .nav-bar .menu-btn {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 0rem;
+}
+.chatWindowContainer .nav-bar .log-out-section {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0rem 0.5rem;
+  color: rgba(229, 226, 226, 0.2);
+}
+.chatWindowContainer .nav-bar .log-out-section .close-btn:hover {
+  color: rgb(198, 193, 193);
+}
+.chatWindowContainer .nav-bar .log-out-section button {
+  font-size: 1rem;
+  color: rgba(229, 226, 226, 0.2);
+  font-family: "Montserrat", sans-serif;
+}
+.chatWindowContainer .nav-bar .log-out-section button:hover {
+  color: rgb(198, 193, 193);
+}
+
+.commentAndReply {
+  display: flex;
+  flex-direction: column;
+  margin: 0rem 1rem;
+  margin-top: 0.2rem;
+  width: 38rem;
+}
+
+.comment-like-bar {
+  /* outline: 2px solid black; */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 0rem 0.5rem;
+  font-size: 0.7rem;
+}
+
+.comment {
+  font-family: "Rubik", sans-serif;
+  font-weight: 300;
+  display: flex;
+  gap: 1rem;
+  padding: 1rem;
+  padding-top: 0.5rem;
+  max-width: 100%;
+  border-radius: 0.3rem;
+  margin-bottom: 0.5rem;
+  background: #eab010;
+}
+.comment .icon-like {
+  width: 1rem;
+}
+.comment .text {
+  min-width: 30rem;
+  width: -moz-max-content;
+  width: max-content;
+  margin-top: 1rem;
+  color: rgb(59, 59, 61);
+  font-size: 0.9rem;
+}
+
+.ReplyWindow {
+  display: flex;
+  flex-direction: column;
+  padding-left: 10px;
+  margin-left: 20px;
+  border-left: 2px solid rgb(113, 111, 111);
+}
+.ReplyWindow .viewReplies {
+  font-size: 0.7rem;
+  color: rgb(104, 101, 101);
+  margin-left: 77.5%;
+}
+.ReplyWindow .viewReplies:hover {
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.responseBox {
+  display: flex;
+  background: #eab010;
+  gap: 1rem;
+  padding: 1rem;
+  margin-bottom: 0.7rem;
+  width: 100%;
+  border-radius: 0.3rem;
+}
+.responseBox .comment-header-image {
+  align-self: center;
+  width: 4rem;
+  height: 4rem;
+}
+.responseBox .textAreaBox,
+.responseBox textarea {
+  border-radius: 0.4em;
+  font-size: 0.8rem;
+  background: rgb(20, 34, 48);
+  outline: none;
+  border: none;
+  width: 100%;
+  resize: none;
+  padding: 1em;
+  color: rgb(198, 193, 193);
+}
+
+textarea::-webkit-scrollbar-thumb {
+  background-color: rgb(65, 63, 63);
+}
+
+textarea::-webkit-scrollbar {
+  width: 0.3em;
+}
+
+.headerAndText {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  width: 100%;
+}
+
+.comment-header {
+  display: flex;
+  align-items: center;
+  justify-items: space-around;
+  gap: 1rem;
+  font-size: 0.75rem;
+  width: 100%;
+}
+.comment-header .comment-header-image {
+  max-width: 30px;
+  max-height: 30px;
+}
+.comment-header .username {
+  font-weight: bold;
+}
+.comment-header .comment-header-edit {
+  margin-left: auto;
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+.comment-header .reply-btn {
+  display: flex;
+  gap: 0.3rem;
+  align-items: center;
+  margin-left: auto;
+}
+
+.textArea {
+  margin: 0rem auto;
+  margin-top: 1rem;
+  display: flex;
+  align-items: flex-start;
+  gap: 1em;
+  padding: 0.5rem 1rem;
+  border-radius: 0.3rem;
+  width: 38rem;
+  background: #eab010;
+}
+.textArea textarea {
+  width: 100%;
+  border: none;
+  outline: none;
+  resize: none;
+  padding: 1em;
+  border-radius: 0.4em;
+  background: rgb(20, 34, 48);
+  color: rgb(198, 193, 193);
+}
+.textArea .comment-header-image {
+  align-self: center;
+  width: 4rem;
+  height: 4rem;
+}
+
+textarea::-webkit-scrollbar-thumb {
+  background-color: rgb(198, 193, 193);
+}
+
+textarea::-webkit-scrollbar {
+  width: 0.3em;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  position: relative;
+}
+
+button {
+  background: none;
+  border: none;
+}/*# sourceMappingURL=styles.css.map */
