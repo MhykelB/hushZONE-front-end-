@@ -30,14 +30,15 @@ function Login() {
           uiDisplay.showNetworkResponse("");
           uiDisplay.setSpinner(false);
         }, 2000);
+        return;
       } else {
-        console.log("good");
-        Navigate("/errorPage");
+        return Navigate("/errorPage");
       }
     } catch (error) {
-      console.log(error);
+      // happens when there's is internet acess but no connection to the backend/server : Failed to fetch
+      console.log(error.code);
       if (error.message === "Failed to fetch") {
-        uiDisplay.showNetworkResponse("Error: check your connection");
+        uiDisplay.showNetworkResponse("Error: server error");
         return setTimeout(() => {
           Navigate("/errorPage");
           uiDisplay.showNetworkResponse("");

@@ -70,10 +70,10 @@ const TextBox = ({ user }) => {
       <img
         className="comment-header-image"
         src={
-          `/images/avatars/image-${user.username}.png` ||
-          `/images/avatars/image-random.svg`
+          `/images/avatars/image-random.svg` ||
+          `/images/avatars/image-${user.username}.png`
         }
-        alt="img"
+        alt=""
       />
       <textarea
         value={text}

@@ -26,14 +26,14 @@ export const SignUpPage = () => {
     clearInputs,
   } = useUserCredentials();
   const { isError, setIsError } = useInputErrorDisplay();
-  const [modal, setModal] = useState(true);
+  const [modal, setModal] = useState(false);
   const { spinner, setSpinner } = useSpinnerControl();
   const { requestResponse, showNetworkResponse } =
     useConnectionResponseDisplay();
 
   const signupStyle = {
     pointerEvents: spinner ? "none" : "auto",
-    opacity: spinner ? 0.75 : 1,
+    opacity: spinner ? 0.45 : 1,
     display: "flex",
     flexDirection: "column",
     gap: "2.0rem",
@@ -84,8 +84,13 @@ export const SignUpPage = () => {
                   onChange={(e) => {
                     e.preventDefault();
                     setIsError((prev) => {
-                      return { ...prev, password: false };
+                      return {
+                        ...prev,
+                        password: false,
+                        comparePassword: false,
+                      };
                     });
+
                     setPassWord(e.target.value);
                   }}
                 />
@@ -106,7 +111,11 @@ export const SignUpPage = () => {
                   onChange={(e) => {
                     e.preventDefault();
                     setIsError((prev) => {
-                      return { ...prev, confirmPassword: false };
+                      return {
+                        ...prev,
+                        confirmPassword: false,
+                        comparePassword: false,
+                      };
                     });
                     setConfirmPassWord(e.target.value);
                   }}
@@ -117,9 +126,13 @@ export const SignUpPage = () => {
                 >
                   *field cannot be empty
                 </p>
-                {isError.comparePassword && (
-                  <p className="warning-on">*passwords do not match</p>
-                )}
+
+                <p
+                  className="warning-on"
+                  style={{ opacity: isError.comparePassword ? 1 : 0 }}
+                >
+                  *passwords do not match
+                </p>
               </div>
               <div className="login-section">
                 <SignUp />

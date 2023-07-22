@@ -19,13 +19,12 @@ function SignUp() {
       if (data.status === 201) {
         uiDisplay.setSpinner(false);
         uiDisplay.setModal(true);
-        // const resp = await data.json();
-        // console.log(resp.message);
-        // setTimeout(() => {
-        //   Navigate("/login");
-        // }, 1500);
+        setTimeout(() => {
+          Navigate("/login");
+        }, 1750);
       } else {
         const resp = await data.json();
+        console.log(resp);
         uiDisplay.showNetworkResponse(resp);
         setTimeout(() => {
           uiDisplay.showNetworkResponse("");

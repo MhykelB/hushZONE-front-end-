@@ -8,7 +8,7 @@ import { DefaultErrorPage } from "./pages/errorLoading";
 
 function App() {
   const homepage = {
-    text: "got something on your mind? Share it here, stay unknown </span>",
+    text: "got something on your mind? Share it here, stay unknown",
     appTitle: "hush",
   };
   return (

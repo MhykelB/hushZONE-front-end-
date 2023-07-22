@@ -33,7 +33,7 @@ const Spinner = ({ loadingState, classID, color, size }) => {
   );
 };
 // correct to sign up succesful
-export default function RequestStatus({ error, message }) {
+export default function RequestStatus({ message }) {
   return (
     <section className="requestStatus">
       <h3> {message}</h3>

@@ -1,5 +1,6 @@
 import React from "react";
 import { useContext } from "react";
+import { useNavigate } from "react-router-dom";
 import { CommentsProvider } from "../pages/chatpage";
 import { commentContext } from "./commentsWindow";
 import { localCommentProps } from "./chatsWindowComponents/textsDisplayFormat";
@@ -9,6 +10,7 @@ import { AiOutlineDelete } from "react-icons/ai";
 
 // const commentsUrl = "http://localhost:4000/api/v1/comments";
 export const SendCommentBtn = ({ userText, clearInput }) => {
+  const Navigate = useNavigate();
   const { commentsList, setCommentsList, showNetworkResponse } =
     useContext(CommentsProvider);
   const token = JSON.parse(localStorage.getItem("token"));
@@ -31,18 +33,21 @@ export const SendCommentBtn = ({ userText, clearInput }) => {
         setTimeout(() => {
           showNetworkResponse("");
         }, 2000);
-      } else {
-        showNetworkResponse(responseMsg);
+        return;
+      } else if (response.status && responseMsg) {
+        // like when there's access to server (running locally) but no connection to database due to no internet
+        showNetworkResponse(`Error ${response.status} : connection error`);
         setTimeout(() => {
           showNetworkResponse("");
         }, 2000);
+        return;
+      } else {
+        Navigate("/errorPage");
       }
     } catch (error) {
-      error.message && showNetworkResponse(error.message);
-      setTimeout(() => {
-        showNetworkResponse("");
-      }, 2000);
-      console.log(error);
+      // happens when there's is internet acess but no connection to the backend/server : Failed fetch
+      console.log(error.message);
+      Navigate("/errorPage");
     }
   };
   return (
@@ -54,6 +59,7 @@ export const SendCommentBtn = ({ userText, clearInput }) => {
       // }}
       onClick={(e) => {
         e.preventDefault();
+        showNetworkResponse("sending...");
         postText();
         clearInput("");
       }}
@@ -106,6 +112,7 @@ export const SendReplyBtn = ({ replyBody, setReplyInput }) => {
       disabled={replyBody.text.trim().length > 0 ? false : true}
       onClick={(e) => {
         e.preventDefault();
+        showNetworkResponse("sending...");
         setReplyInput("");
         sendReply();
       }}
