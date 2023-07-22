@@ -199,7 +199,7 @@ export const LikeAndUnlikeBtn = () => {
 
 export const DeleteBtn = () => {
   const { objNature, localCommentID } = useContext(localCommentProps);
-  const { commentsList, setCommentsList, showNetworkResponse } =
+  const { commentsList, setCommentsList, showNetworkResponse, darkMode } =
     useContext(CommentsProvider);
   const deleteCommentUrl = `http://localhost:4000/api/v1/comments/${localCommentID}`;
   const deleteReplyUrl = `http://localhost:4000/api/v1/comments/deletereply/${localCommentID}`;
@@ -256,7 +256,11 @@ export const DeleteBtn = () => {
         deletefunc();
       }}
     >
-      <IconContext.Provider value={{ className: "icons" }}>
+      <IconContext.Provider
+        value={
+          !darkMode ? { className: "icons" } : { className: "icons icons-dm" }
+        }
+      >
         <AiOutlineDelete size={20} />
       </IconContext.Provider>
     </div>

@@ -1,7 +1,7 @@
 .requestStatus,
 .requestStatus-chatPage {
   align-self: center;
-  background: rgb(37, 36, 36);
+  background: $dark-blue;
   border-radius: 0.3rem;
   color: $color3;
   padding: 0.3rem 1rem;
@@ -18,11 +18,22 @@
     font-weight: 300;
   }
 }
+@keyframes example {
+  from {
+    top: -2rem;
+  }
+  to {
+    top: 0rem;
+  }
+}
 .requestStatus-chatPage {
+  position: absolute;
   background: $dark-blue;
   width: 20%;
   padding: 0.5rem;
   top: 0rem;
+  animation-name: example;
+  animation-duration: 0.2s;
   margin-left: auto;
   margin-right: auto;
 }

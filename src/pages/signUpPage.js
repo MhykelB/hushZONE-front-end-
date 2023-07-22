@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import SignUp from "../components/signUp";
 import {
   Spinner,
-  LoginSuccessModal,
+  SignUpSuccessModal,
   RequestStatus,
 } from "../components/modals";
 import { useSpinnerControl } from "../customHooks/spinnerControl";
@@ -26,7 +26,7 @@ export const SignUpPage = () => {
     clearInputs,
   } = useUserCredentials();
   const { isError, setIsError } = useInputErrorDisplay();
-  const [modal, setModal] = useState(false);
+  const [modal, setModal] = useState(true);
   const { spinner, setSpinner } = useSpinnerControl();
   const { requestResponse, showNetworkResponse } =
     useConnectionResponseDisplay();
@@ -132,7 +132,7 @@ export const SignUpPage = () => {
               </div>
             </>
           ) : (
-            <LoginSuccessModal />
+            <SignUpSuccessModal />
           )}
         </div>
         {spinner && <Spinner classID={"loginPageSpinner"} />}

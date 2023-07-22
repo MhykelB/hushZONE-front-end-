@@ -14,3 +14,6 @@
 @mixin colorWhite($opacity) {
   color: rgba(255, 255, 255, $opacity);
 }
+@mixin colorGrey($opacity) {
+  color: rgba(105, 103, 103, $opacity);
+}

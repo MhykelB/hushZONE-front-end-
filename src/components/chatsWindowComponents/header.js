@@ -10,10 +10,14 @@ import { FaRegEdit } from "react-icons/fa";
 
 export const Header = ({ obj }) => {
   const { objNature } = useContext(localCommentProps);
-  const { userInfo } = useContext(CommentsProvider);
+  const { userInfo, darkMode } = useContext(CommentsProvider);
   const date = useDateCoverter(obj.createdAt);
   return (
-    <div className="comment-header">
+    <div
+      className={
+        !darkMode ? "comment-header" : "comment-header comment-header-dm"
+      }
+    >
       <img
         src={`/images/avatars/image-${obj.created_by}.png`}
         alt="picc"
@@ -38,7 +42,7 @@ export const Header = ({ obj }) => {
 const EditArrowBtn = () => {
   let randomNumber;
   const { toggleInputBox } = useContext(localCommentProps);
-  const { setShowResponseBox } = useContext(CommentsProvider);
+  const { setShowResponseBox, darkMode } = useContext(CommentsProvider);
   return (
     <div
       className="edit-btn"
@@ -49,7 +53,11 @@ const EditArrowBtn = () => {
         setShowResponseBox(randomNumber);
       }}
     >
-      <IconContext.Provider value={{ className: "icons" }}>
+      <IconContext.Provider
+        value={
+          !darkMode ? { className: "icons" } : { className: "icons icons-dm" }
+        }
+      >
         <FaRegEdit size={18} />
       </IconContext.Provider>
     </div>
@@ -58,7 +66,7 @@ const EditArrowBtn = () => {
 const ReplyArrowBtn = () => {
   let randomNumber;
   const { toggleInputBox } = useContext(localCommentProps);
-  const { setShowResponseBox } = useContext(CommentsProvider);
+  const { setShowResponseBox, darkMode } = useContext(CommentsProvider);
   return (
     <button
       className="reply-btn"
@@ -70,7 +78,11 @@ const ReplyArrowBtn = () => {
       }}
     >
       <div className="reply-icon">
-        <IconContext.Provider value={{ className: "icons" }}>
+        <IconContext.Provider
+          value={
+            !darkMode ? { className: "icons" } : { className: "icons icons-dm" }
+          }
+        >
           <BsReply size={20} />
         </IconContext.Provider>
       </div>

@@ -1,0 +1,27 @@
+.responseBox-dm {
+  background: $color1;
+}
+.comment-darkmode {
+  background: $color1;
+  .text-darkmode {
+    @include colorWhite(0.5);
+  }
+  .comment-header-dm {
+    @include colorWhite(0.75);
+    .username {
+      color: black;
+      // font-weight: lighter;
+    }
+  }
+}
+.addTextArea-darkmode {
+  background: $color1;
+}
+
+.icons-dm {
+  @include colorWhite(0.75);
+  &:hover {
+    color: black;
+  }
+  cursor: pointer;
+}

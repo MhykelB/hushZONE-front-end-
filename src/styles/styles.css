@@ -299,7 +299,7 @@ footer {
 .requestStatus,
 .requestStatus-chatPage {
   align-self: center;
-  background: rgb(37, 36, 36);
+  background: rgb(20, 34, 48);
   border-radius: 0.3rem;
   color: rgb(239, 242, 242);
   padding: 0.3rem 1rem;
@@ -318,11 +318,22 @@ footer {
   font-weight: 300;
 }
 
+@keyframes example {
+  from {
+    top: -2rem;
+  }
+  to {
+    top: 0rem;
+  }
+}
 .requestStatus-chatPage {
+  position: absolute;
   background: rgb(20, 34, 48);
   width: 20%;
   padding: 0.5rem;
   top: 0rem;
+  animation-name: example;
+  animation-duration: 0.2s;
   margin-left: auto;
   margin-right: auto;
 }
@@ -335,12 +346,53 @@ footer {
 }
 
 .chatPageSpinner {
-  outline: 2px solid black;
   position: absolute;
-  top: 20rem;
-  right: 15rem;
+  top: 50%;
+  right: 50%;
+  margin-left: auto;
+  margin-right: auto;
 }
 
+.signUpSuccessful {
+  width: 25rem;
+  height: 25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+  align-items: center;
+  justify-content: center;
+}
+.signUpSuccessful .check-container {
+  width: 13rem;
+  height: 13rem;
+}
+.signUpSuccessful .sign-up-icon {
+  width: 12rem;
+  height: 12rem;
+  animation-name: colorChange;
+  animation-duration: 0.8s;
+  color: rgb(255, 165, 0);
+}
+.signUpSuccessful h3 {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 300;
+}
+
+@keyframes colorChange {
+  0% {
+    color: rgb(20, 34, 48);
+    width: 0rem;
+    height: 0rem;
+  }
+  80% {
+    color: rgb(20, 34, 48);
+    width: 12rem;
+    height: 12rem;
+  }
+  100% {
+    color: rgb(255, 165, 0);
+  }
+}
 .errorPage {
   display: flex;
   flex-direction: column;
@@ -406,13 +458,14 @@ footer {
 }
 
 .viewReplies {
-  font-size: 0.7rem;
+  font-size: 0.7em;
   color: rgb(104, 101, 101);
   margin-top: 0rem;
   margin-bottom: 0.2rem;
+  margin-left: 77.5%;
 }
 .viewReplies:hover {
-  color: rgb(10, 10, 10);
+  color: rgba(255, 255, 255, 0.8);
 }
 
 .closeReplies {
@@ -424,6 +477,17 @@ footer {
 }
 .closeReplies:hover {
   color: rgb(10, 10, 10);
+}
+
+.light-bulb {
+  margin: 0rem 0.5em;
+  cursor: pointer;
+}
+.light-bulb .dm-off {
+  color: rgb(255, 165, 0);
+}
+.light-bulb .dm-on {
+  color: rgba(255, 255, 255, 0.5);
 }
 
 .comment-send:disabled {
@@ -461,8 +525,7 @@ footer {
 
 .chatWindowContainer {
   background: rgb(20, 34, 48);
-  width: -moz-fit-content;
-  width: fit-content;
+  max-width: 38rem;
   margin: 0rem auto;
   display: flex;
   flex-direction: column;
@@ -471,7 +534,7 @@ footer {
   min-height: 100vmin;
 }
 .chatWindowContainer .nav-bar {
-  min-width: 100%;
+  width: 100%;
   font-family: "Open Sans", sans-serif;
   font-weight: 100;
   display: flex;
@@ -523,7 +586,6 @@ footer {
   flex-direction: column;
   margin: 0rem 1rem;
   margin-top: 0.2rem;
-  width: 38rem;
 }
 
 .comment-like-bar {
@@ -552,43 +614,32 @@ footer {
   width: 1rem;
 }
 .comment .text {
-  min-width: 30rem;
-  width: -moz-max-content;
-  width: max-content;
   margin-top: 1rem;
   color: rgb(59, 59, 61);
   font-size: 0.9rem;
 }
 
 .ReplyWindow {
+  display: none;
   display: flex;
   flex-direction: column;
   padding-left: 10px;
   margin-left: 20px;
   border-left: 2px solid rgb(113, 111, 111);
 }
-.ReplyWindow .viewReplies {
-  font-size: 0.7rem;
-  color: rgb(104, 101, 101);
-  margin-left: 77.5%;
-}
-.ReplyWindow .viewReplies:hover {
-  color: rgba(255, 255, 255, 0.8);
-}
 
 .responseBox {
   display: flex;
   background: #eab010;
   gap: 1rem;
-  padding: 1rem;
+  padding: 0.5rem;
   margin-bottom: 0.7rem;
-  width: 100%;
   border-radius: 0.3rem;
 }
 .responseBox .comment-header-image {
   align-self: center;
-  width: 4rem;
-  height: 4rem;
+  width: 3.5rem;
+  height: 3.5rem;
 }
 .responseBox .textAreaBox,
 .responseBox textarea {
@@ -624,7 +675,6 @@ textarea::-webkit-scrollbar {
   justify-items: space-around;
   gap: 1rem;
   font-size: 0.75rem;
-  width: 100%;
 }
 .comment-header .comment-header-image {
   max-width: 30px;
@@ -646,28 +696,30 @@ textarea::-webkit-scrollbar {
   margin-left: auto;
 }
 
-.textArea {
-  margin: 0rem auto;
+.addTextArea {
+  margin: 0rem 1rem;
   margin-top: 1rem;
   display: flex;
   align-items: flex-start;
   gap: 1em;
   padding: 0.5rem 1rem;
   border-radius: 0.3rem;
-  width: 38rem;
   background: #eab010;
 }
-.textArea textarea {
+.addTextArea textarea {
+  margin-bottom: 0rem;
+  padding-bottom: 0rem;
+  min-height: 4rem;
   width: 100%;
   border: none;
   outline: none;
   resize: none;
-  padding: 1em;
+  padding: 0.5em;
   border-radius: 0.4em;
   background: rgb(20, 34, 48);
   color: rgb(198, 193, 193);
 }
-.textArea .comment-header-image {
+.addTextArea .comment-header-image {
   align-self: center;
   width: 4rem;
   height: 4rem;
@@ -679,6 +731,67 @@ textarea::-webkit-scrollbar-thumb {
 
 textarea::-webkit-scrollbar {
   width: 0.3em;
+}
+
+@media screen and (max-width: 620px) {
+  .chatWindowContainer {
+    width: 28rem;
+  }
+  .ReplyWindow .viewReplies {
+    margin-left: 67%;
+  }
+  .addTextArea {
+    margin-top: 0.4rem;
+  }
+}
+.requestStatus-chatPage {
+  width: 30%;
+}
+
+.small-logo {
+  display: flex;
+  align-items: center;
+  gap: 0.2em;
+  align-self: flex-start;
+}
+.small-logo .small-logo-name {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 300;
+}
+.small-logo .small-logo-name span {
+  padding: 0.2em;
+  outline: 2;
+  background: rgb(20, 34, 48);
+  color: rgb(255, 165, 0);
+}
+
+.responseBox-dm {
+  background: rgb(55, 79, 96);
+}
+
+.comment-darkmode {
+  background: rgb(55, 79, 96);
+}
+.comment-darkmode .text-darkmode {
+  color: rgba(255, 255, 255, 0.5);
+}
+.comment-darkmode .comment-header-dm {
+  color: rgba(255, 255, 255, 0.75);
+}
+.comment-darkmode .comment-header-dm .username {
+  color: black;
+}
+
+.addTextArea-darkmode {
+  background: rgb(55, 79, 96);
+}
+
+.icons-dm {
+  color: rgba(255, 255, 255, 0.75);
+  cursor: pointer;
+}
+.icons-dm:hover {
+  color: black;
 }
 
 * {

@@ -6,8 +6,54 @@
   left: 10rem;
 }
 .chatPageSpinner {
-  outline: 2px solid black;
+  // outline: 2px solid rgb(232, 38, 38);
   position: absolute;
-  top: 20rem;
-  right: 15rem;
+  top: 50%;
+  right: 50%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.signUpSuccessful {
+  width: 25rem;
+  height: 25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+  align-items: center;
+  justify-content: center;
+  // background: $dark-blue;
+  .check-container {
+    width: 13rem;
+    height: 13rem;
+  }
+  .sign-up-icon {
+    // outline: 1px solid black;
+    width: 12rem;
+    height: 12rem;
+    animation-name: colorChange;
+    // animation-timing-function: ease-out;
+    animation-duration: 0.8s;
+    color: $orange;
+  }
+  h3 {
+    font-family: $fam5;
+    font-weight: 300;
+  }
+}
+
+@keyframes colorChange {
+  0% {
+    color: $dark-blue;
+    width: 0rem;
+    height: 0rem;
+  }
+  80% {
+    color: $dark-blue;
+    width: 12rem;
+    height: 12rem;
+  }
+  100% {
+    color: $orange;
+  }
 }

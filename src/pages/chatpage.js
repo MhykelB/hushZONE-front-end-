@@ -1,5 +1,5 @@
 import React from "react";
-import { useState } from "react";
+import { useState, useContext } from "react";
 import { CommentWindow } from "../components/commentsWindow";
 import { useFetchUser } from "../customHooks/fecthUsers";
 import { SendCommentBtn } from "../components/requests";
@@ -13,6 +13,7 @@ const commentsUrl = "http://localhost:4000/api/v1/comments";
 export const CommentsProvider = React.createContext();
 
 function ChatPage() {
+  const [darkMode, setDarkMode] = useState(false);
   const [showResponseBox, setShowResponseBox] = useState(false);
   const { requestResponse, showNetworkResponse } =
     useConnectionResponseDisplay();
@@ -21,6 +22,8 @@ function ChatPage() {
   return (
     <CommentsProvider.Provider
       value={{
+        darkMode,
+        setDarkMode,
         commentsList,
         userInfo,
         setCommentsList,
@@ -46,21 +49,24 @@ function ChatPage() {
           <Spinner classID={"chatPageSpinner"} color={"#eab010"} size={50} />
         )}
         {userInfo && <TextBox user={userInfo} />}
-        {requestResponse !== "" && (
-          <RequestStatus
-            message={requestResponse}
-            className="requestStatus-chatPage "
-          />
-        )}
       </div>
+      {requestResponse !== "" && (
+        <RequestStatus
+          message={requestResponse}
+          className="requestStatus-chatPage "
+        />
+      )}
     </CommentsProvider.Provider>
   );
 }
 
 const TextBox = ({ user }) => {
+  const { darkMode } = useContext(CommentsProvider);
   const [text, setText] = useState("");
   return (
-    <section className="textArea">
+    <section
+      className={!darkMode ? "addTextArea" : "addTextArea addTextArea-darkmode"}
+    >
       <img
         className="comment-header-image"
         src={
@@ -74,7 +80,7 @@ const TextBox = ({ user }) => {
         onChange={(e) => {
           setText(e.target.value);
         }}
-        placeholder="Add a comment..."
+        placeholder="Share a secret..."
         className="textAreaBox"
       ></textarea>
       <SendCommentBtn userText={text} clearInput={setText} />

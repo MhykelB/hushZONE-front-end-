@@ -21,9 +21,9 @@ function SignUp() {
         uiDisplay.setModal(true);
         // const resp = await data.json();
         // console.log(resp.message);
-        setTimeout(() => {
-          Navigate("/login");
-        }, 1500);
+        // setTimeout(() => {
+        //   Navigate("/login");
+        // }, 1500);
       } else {
         const resp = await data.json();
         uiDisplay.showNetworkResponse(resp);

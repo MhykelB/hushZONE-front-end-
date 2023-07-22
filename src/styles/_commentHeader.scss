@@ -10,14 +10,11 @@
   // outline: 2px solid rgb(185, 57, 7);
 }
 .comment-header {
-  // outline: 1px solid black;
   display: flex;
   align-items: center;
   justify-items: space-around;
   gap: 1rem;
   font-size: 0.75rem;
-  // padding-right: 2rem;
-  width: 100%;
   .comment-header-image {
     max-width: 30px;
     max-height: 30px;

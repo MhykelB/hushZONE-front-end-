@@ -1,0 +1,16 @@
+.small-logo {
+  display: flex;
+  align-items: center;
+  gap: 0.2em;
+  align-self: flex-start;
+  .small-logo-name {
+    font-family: $fam5;
+    font-weight: 300;
+    span {
+      padding: 0.2em;
+      outline: 2;
+      background: $dark-blue;
+      color: $orange;
+    }
+  }
+}

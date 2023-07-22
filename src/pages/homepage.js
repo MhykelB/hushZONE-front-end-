@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { BsEmojiNeutral } from "react-icons/bs";
-import { IconContext } from "react-icons";
+
 // import { useState, useEffect } from "react";
 
 // const loginFunc = async () => {

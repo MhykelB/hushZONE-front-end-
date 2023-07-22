@@ -1,9 +1,14 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { AiOutlineMenu } from "react-icons/ai";
 import { AiOutlineClose } from "react-icons/ai";
+import { PiLightbulbFilamentThin } from "react-icons/pi";
+import { PiLightbulbFill } from "react-icons/pi";
+import { CommentsProvider } from "../pages/chatpage";
+import { IconContext } from "react-icons";
 
 export default function NavBar({ username }) {
+  const { darkMode, setDarkMode } = useContext(CommentsProvider);
   const [toggleMenu, setToggleMenu] = useState(false);
   return (
     <nav className="nav-bar">
@@ -25,6 +30,22 @@ export default function NavBar({ username }) {
       {toggleMenu && (
         <div className="log-out-section">
           <LogOutBtn />
+          <i
+            className="light-bulb"
+            onClick={() => {
+              setDarkMode((prev) => {
+                return !prev;
+              });
+            }}
+          >
+            <IconContext.Provider
+              value={
+                darkMode ? { className: "dm-on" } : { className: "dm-off" }
+              }
+            >
+              <PiLightbulbFill />
+            </IconContext.Provider>
+          </i>
           <div
             className="close-btn"
             onClick={() => {

@@ -20,12 +20,12 @@ export const useFetchUser = (url) => {
           setUserInfo(chatArray.user);
         } else {
           console.log("bad");
-          Navigate("/errorPage");
+          // Navigate("/errorPage");
         }
       } catch (error) {
         console.log("good");
         console.log(error.message);
-        Navigate("/errorPage");
+        // Navigate("/errorPage");
       }
     }
     fetchDAta();

@@ -40,7 +40,7 @@ function LoginPage() {
           <div className="input">
             <label htmlFor="username">username</label>
             <input
-              autofocus="autofocus"
+              autoFocus="autofocus"
               type="text"
               name="username"
               placeholder="enter username"

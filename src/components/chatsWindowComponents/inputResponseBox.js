@@ -9,7 +9,7 @@ import { AiOutlineClose } from "react-icons/ai";
 
 export const ResponseBox = () => {
   let randomNumber;
-  const { userInfo, showResponseBox, setShowResponseBox } =
+  const { userInfo, showResponseBox, setShowResponseBox, darkMode } =
     useContext(CommentsProvider);
   const { toggleInputBox, commentCreator } = useContext(localCommentProps);
   const [reply, setReply] = useState("");
@@ -27,7 +27,9 @@ export const ResponseBox = () => {
   return (
     <div>
       {showResponseBox && toggleInputBox.current === true ? (
-        <div className="responseBox">
+        <div
+          className={!darkMode ? "responseBox" : "responseBox responseBox-dm"}
+        >
           <img
             src={
               `/images/avatars/image-${userInfo.username}.png` ||
@@ -37,7 +39,7 @@ export const ResponseBox = () => {
             className="comment-header-image"
           />
           <textarea
-            autofocus
+            autoFocus="autofocus"
             placeholder="reply...."
             className="textAreaBox"
             value={reply}

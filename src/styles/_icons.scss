@@ -13,12 +13,13 @@
   }
 }
 .viewReplies {
-  font-size: 0.7rem;
+  font-size: 0.7em;
   color: rgba(104, 101, 101, 1);
   margin-top: 0rem;
   margin-bottom: 0.2rem;
+  margin-left: 77.5%;
   &:hover {
-    color: rgb(10, 10, 10);
+    @include colorWhite(0.8);
   }
 }
 .closeReplies {
@@ -29,5 +30,15 @@
   margin-right: 0.8rem;
   &:hover {
     color: rgb(10, 10, 10);
+  }
+}
+.light-bulb {
+  margin: 0rem 0.5em;
+  cursor: pointer;
+  .dm-off {
+    color: $orange;
+  }
+  .dm-on {
+    @include colorWhite(0.5);
   }
 }

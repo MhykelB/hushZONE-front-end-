@@ -1,0 +1,62 @@
+@media screen and (max-width: 620px) {
+  .chatWindowContainer {
+    width: 28rem;
+    // overflow: hidden;
+    .nav-bar {
+      .greeting {
+        span {
+        }
+      }
+      .menu-btn {
+      }
+      .log-out-section {
+        .close-btn {
+          &:hover {
+          }
+        }
+
+        button {
+          &:hover {
+          }
+        }
+      }
+    }
+  }
+  .commentAndReply {
+    // width: 100%;
+  }
+  .comment-like-bar {
+  }
+
+  .comment {
+    .icon-like {
+    }
+    .text {
+      // max-width: 10rem;
+    }
+  }
+  .ReplyWindow {
+    .viewReplies {
+      margin-left: 67%;
+    }
+    .viewReplies:hover {
+    }
+  }
+
+  .responseBox {
+    .comment-header-image {
+    }
+    .textAreaBox,
+    textarea {
+      // width: fit-content;
+    }
+  }
+  .addTextArea {
+    margin-top: 0.4rem;
+    // margin: 0rem 0.1em;
+    // width: 90%;
+  }
+}
+.requestStatus-chatPage {
+  width: 30%;
+}

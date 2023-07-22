@@ -7,7 +7,7 @@ import { ResponseBox } from "./inputResponseBox";
 
 export const localCommentProps = React.createContext();
 export const TextWindow = ({ commentObj }) => {
-  const { userInfo } = useContext(CommentsProvider);
+  const { userInfo, darkMode } = useContext(CommentsProvider);
   const toggleInputBox = useRef(false);
   const commentCreator = commentObj.created_by;
   const likes = commentObj.likes.length;
@@ -25,7 +25,7 @@ export const TextWindow = ({ commentObj }) => {
           islike,
         }}
       >
-        <div className="comment">
+        <div className={!darkMode ? "comment" : "comment comment-darkmode"}>
           <section className="comment-like-bar">
             <LikeAndUnlikeBtn />
             <div className="comment-likes">{likes}</div>
@@ -33,7 +33,9 @@ export const TextWindow = ({ commentObj }) => {
           <section className="headerAndText">
             <Header obj={commentObj} />
             {/* <section className="comment-body"> */}
-            <p className="comment-note text">{commentObj.text}</p>
+            <p className={!darkMode ? "text" : "text text-darkmode"}>
+              {commentObj.text}
+            </p>
             {/* </section> */}
           </section>
         </div>

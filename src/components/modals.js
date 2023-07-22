@@ -1,11 +1,22 @@
 import React from "react";
 import { DotLoader } from "react-spinners";
-// import { ClimbingBoxLoader } from "react-spinners";
+import { BsCheck2Circle } from "react-icons/bs";
+import { IconContext } from "react-icons";
+import { BsEmojiNeutral } from "react-icons/bs";
 
-const LoginSuccessModal = () => {
+const SignUpSuccessModal = () => {
   return (
-    <div>
-      <h3 className="loginSuccessful">Sign up successful....</h3>
+    <div className="signUpSuccessful">
+      <Logo />
+      <div className="check-container">
+        <IconContext.Provider value={{ className: "sign-up-icon" }}>
+          <BsCheck2Circle
+            size={120}
+            /* color="rgba(255, 165, 0, 1)"*/
+          />
+        </IconContext.Provider>
+      </div>
+      <h3>Sign up successful....</h3>
     </div>
   );
 };
@@ -30,4 +41,16 @@ export default function RequestStatus({ error, message }) {
   );
 }
 
-export { LoginSuccessModal, Spinner, RequestStatus };
+const Logo = () => {
+  return (
+    <div className="small-logo">
+      <BsEmojiNeutral color="rgba(255, 165, 0, 1)" />
+      <div className="small-logo-name">
+        {" "}
+        hush<span>ZONE</span>
+      </div>
+    </div>
+  );
+};
+
+export { SignUpSuccessModal, Spinner, RequestStatus };
