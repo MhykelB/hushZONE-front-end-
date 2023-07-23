@@ -1,8 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { BsFillEmojiAngryFill } from "react-icons/bs";
-import { AiOutlineAlipayCircle } from "react-icons/ai";
-import { IconContext } from "react-icons";
+// import { AiOutlineAlipayCircle } from "react-icons/ai";
+// import { IconContext } from "react-icons";
 
 export function DefaultErrorPage() {
   return (

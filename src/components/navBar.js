@@ -2,7 +2,7 @@ import React, { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { AiOutlineMenu } from "react-icons/ai";
 import { AiOutlineClose } from "react-icons/ai";
-import { PiLightbulbFilamentThin } from "react-icons/pi";
+// import { PiLightbulbFilamentThin } from "react-icons/pi";
 import { PiLightbulbFill } from "react-icons/pi";
 import { CommentsProvider } from "../pages/chatpage";
 import { IconContext } from "react-icons";
