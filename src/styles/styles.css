@@ -127,6 +127,7 @@ footer {
     display: flex;
     flex-direction: column;
     gap: 4rem;
+    padding-top: 5rem;
     max-height: 50rem;
   }
   .app-title {
@@ -693,11 +694,21 @@ textarea::-webkit-scrollbar {
 }
 
 @media screen and (max-width: 620px) {
+  body {
+    overflow-y: visible;
+  }
   .chatWindowContainer {
     width: 26rem;
   }
+  .ReplyWindow {
+    margin-left: 10px;
+  }
   .ReplyWindow .viewReplies {
     margin-left: 67%;
+  }
+  .responseBox .comment-header-image {
+    width: 2.5rem;
+    height: 2.5rem;
   }
   .addTextArea {
     margin-top: 0.4rem;
@@ -709,8 +720,8 @@ textarea::-webkit-scrollbar {
 
 .addTextArea .comment-header-image {
   align-self: center;
-  width: 2rem;
-  height: 2rem;
+  width: 2.5rem;
+  height: 2.5rem;
 }
 
 .small-logo {
