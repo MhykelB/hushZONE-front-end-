@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { loginUi } from "../pages/loginPage";
 
 // const loginUrl = "http://localhost:4000/auth/login";
-const loginUrl = "http://comment-app-backend.vercel.app/auth/login";
+const loginUrl = "https://comment-app-backend.vercel.app/auth/login";
 function Login() {
   //get a prop for  user data
 
