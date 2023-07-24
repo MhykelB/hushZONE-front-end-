@@ -1,6 +1,6 @@
 @media screen and (max-width: 620px) {
   .chatWindowContainer {
-    width: 28rem;
+    width: 26rem;
     // overflow: hidden;
     .nav-bar {
       .greeting {
@@ -59,4 +59,12 @@
 }
 .requestStatus-chatPage {
   width: 30%;
+}
+.addTextArea {
+  .comment-header-image {
+    // outline: 2px solid rgb(185, 10, 10);
+    align-self: center;
+    width: 2rem;
+    height: 2rem;
+  }
 }

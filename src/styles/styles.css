@@ -694,7 +694,7 @@ textarea::-webkit-scrollbar {
 
 @media screen and (max-width: 620px) {
   .chatWindowContainer {
-    width: 28rem;
+    width: 26rem;
   }
   .ReplyWindow .viewReplies {
     margin-left: 67%;
@@ -705,6 +705,12 @@ textarea::-webkit-scrollbar {
 }
 .requestStatus-chatPage {
   width: 30%;
+}
+
+.addTextArea .comment-header-image {
+  align-self: center;
+  width: 2rem;
+  height: 2rem;
 }
 
 .small-logo {
@@ -732,7 +738,7 @@ textarea::-webkit-scrollbar {
   color: rgb(239, 242, 242);
   padding: 0.3rem 0.3rem;
   margin: 0rem 4rem;
-  width: 20%;
+  width: 50%;
   position: absolute;
   top: 0.3rem;
 }

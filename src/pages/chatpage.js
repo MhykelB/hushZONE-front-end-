@@ -7,8 +7,8 @@ import NavBar from "../components/navBar";
 import { Spinner } from "../components/modals";
 import { useConnectionResponseDisplay } from "../customHooks/connectionResponseDisplay";
 import RequestStatus from "../components/requestStatus";
-// const commentsUrl = "http://localhost:4000/api/v1/comments";
-const commentsUrl = "https://comment-app-backend.vercel.app/api/v1/comments";
+const commentsUrl = "http://localhost:4000/api/v1/comments";
+// const commentsUrl = "https://comment-app-backend.vercel.app/api/v1/comments";
 
 export const CommentsProvider = React.createContext();
 
