@@ -296,47 +296,6 @@ footer {
   right: 10rem;
 }
 
-.requestStatus,
-.requestStatus-chatPage {
-  align-self: center;
-  background: rgb(20, 34, 48);
-  border-radius: 0.3rem;
-  color: rgb(239, 242, 242);
-  padding: 0.3rem 0.3rem;
-  margin: 0rem 4rem;
-  width: 60%;
-  position: absolute;
-  top: 0.3rem;
-}
-.requestStatus h3,
-.requestStatus-chatPage h3 {
-  font-size: 0.8rem;
-  text-align: center;
-  letter-spacing: 0.05rem;
-  font-family: "Montserrat", sans-serif;
-  font-weight: 300;
-}
-
-@keyframes example {
-  from {
-    top: -2rem;
-  }
-  to {
-    top: 0rem;
-  }
-}
-.requestStatus-chatPage {
-  position: absolute;
-  background: rgb(20, 34, 48);
-  width: 20%;
-  padding: 0.5rem;
-  top: 0rem;
-  animation-name: example;
-  animation-duration: 0.2s;
-  margin-left: auto;
-  margin-right: auto;
-}
-
 .loginPageSpinner {
   position: absolute;
   top: 13rem;
@@ -530,6 +489,7 @@ footer {
   flex-direction: column;
   padding-bottom: 1rem;
   padding-top: 0rem;
+  position: relative;
   min-height: 100vmin;
 }
 .chatWindowContainer .nav-bar {
@@ -762,6 +722,49 @@ textarea::-webkit-scrollbar {
   outline: 2;
   background: rgb(20, 34, 48);
   color: rgb(255, 165, 0);
+}
+
+.requestStatus,
+.requestStatus-chatPage {
+  align-self: center;
+  background: rgb(20, 34, 48);
+  border-radius: 0.3rem;
+  color: rgb(239, 242, 242);
+  padding: 0.3rem 0.3rem;
+  margin: 0rem 4rem;
+  width: 20%;
+  position: absolute;
+  top: 0.3rem;
+}
+.requestStatus h3,
+.requestStatus-chatPage h3 {
+  font-size: 0.8rem;
+  text-align: center;
+  letter-spacing: 0.05rem;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 300;
+}
+
+@keyframes example {
+  from {
+    top: -2rem;
+  }
+  to {
+    top: 0rem;
+  }
+}
+.requestStatus-chatPage {
+  left: 0;
+  right: 0;
+  position: absolute;
+  background: rgb(20, 34, 48);
+  width: 18%;
+  padding: 0.5rem;
+  top: 0rem;
+  animation-name: example;
+  animation-duration: 0.2s;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .responseBox-dm {

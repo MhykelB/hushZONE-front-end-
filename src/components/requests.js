@@ -14,8 +14,10 @@ export const SendCommentBtn = ({ userText, clearInput }) => {
   const { commentsList, setCommentsList, showNetworkResponse } =
     useContext(CommentsProvider);
   const token = JSON.parse(localStorage.getItem("token"));
+  // const postUrl = "http://localhost:4000/api/v1/comments/postcomment";
   const postUrl =
     "https://comment-app-backend.vercel.app/api/v1/comments/postcomment";
+
   const postText = async () => {
     try {
       const response = await fetch(postUrl, {

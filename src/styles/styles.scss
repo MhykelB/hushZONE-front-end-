@@ -2,7 +2,6 @@
 @import "./mixin";
 @import "./homepage";
 @import "./loginpage";
-@import "./requestStatus";
 @import "./modals";
 @import "./errorPage";
 @import "./icons.scss"; // body {
@@ -12,6 +11,7 @@
 @import "./textBox";
 @import "./mediaqueries";
 @import "./smallLogo";
+@import "./requestStatus";
 @import "./darkmode";
 
 * {

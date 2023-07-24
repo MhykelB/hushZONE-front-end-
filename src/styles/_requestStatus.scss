@@ -6,7 +6,7 @@
   color: $color3;
   padding: 0.3rem 0.3rem;
   margin: 0rem 4rem;
-  width: 60%;
+  width: 20%;
   position: absolute;
   top: 0.3rem;
   // margin-left: auto;
@@ -28,9 +28,11 @@
   }
 }
 .requestStatus-chatPage {
+  left: 0;
+  right: 0;
   position: absolute;
   background: $dark-blue;
-  width: 20%;
+  width: 18%;
   padding: 0.5rem;
   top: 0rem;
   animation-name: example;

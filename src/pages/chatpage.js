@@ -54,7 +54,7 @@ function ChatPage() {
       {requestResponse !== "" && (
         <RequestStatus
           message={requestResponse}
-          className="requestStatus-chatPage "
+          className="requestStatus-chatPage"
         />
       )}
     </CommentsProvider.Provider>
