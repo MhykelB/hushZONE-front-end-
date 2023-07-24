@@ -14,7 +14,8 @@ export const SendCommentBtn = ({ userText, clearInput }) => {
   const { commentsList, setCommentsList, showNetworkResponse } =
     useContext(CommentsProvider);
   const token = JSON.parse(localStorage.getItem("token"));
-  const postUrl = "http://localhost:4000/api/v1/comments/postcomment";
+  const postUrl =
+    "https://comment-app-backend.vercel.app/api/v1/comments/postcomment";
   const postText = async () => {
     try {
       const response = await fetch(postUrl, {
@@ -74,7 +75,7 @@ export const SendReplyBtn = ({ replyBody, setReplyInput }) => {
     useContext(CommentsProvider);
   const { commentID } = useContext(commentContext);
   const token = JSON.parse(localStorage.getItem("token"));
-  const url = `http://localhost:4000/api/v1/comments/${commentID}`;
+  const url = `https://comment-app-backend.vercel.app/api/v1/comments/${commentID}`;
   const sendReply = async () => {
     try {
       const response = await fetch(url, {
@@ -126,8 +127,8 @@ export const EditBtn = ({ body, setReplyInput }) => {
   const { objNature, localCommentID } = useContext(localCommentProps);
   const { commentsList, setCommentsList } = useContext(CommentsProvider);
   const token = JSON.parse(localStorage.getItem("token"));
-  const editCommentUrl = `http://localhost:4000/api/v1/comments/updatecomment/${localCommentID}`;
-  const editReplyUrl = `http://localhost:4000/api/v1/comments/updatereply/${localCommentID}`;
+  const editCommentUrl = `https://comment-app-backend.vercel.app/api/v1/comments/updatecomment/${localCommentID}`;
+  const editReplyUrl = `https://comment-app-backend.vercel.app/api/v1/comments/updatereply/${localCommentID}`;
   const url = objNature === "comment" ? editCommentUrl : editReplyUrl;
   const sendEdit = async () => {
     try {
@@ -166,7 +167,7 @@ export const LikeAndUnlikeBtn = () => {
     useContext(CommentsProvider);
   const userID = userInfo.userID;
   const token = JSON.parse(localStorage.getItem("token"));
-  const url = `http://localhost:4000/api/v1/comments/like/${localCommentID}`;
+  const url = `https://comment-app-backend.vercel.app/api/v1/comments/like/${localCommentID}`;
   const body = { userID: userID, duty: objNature };
   const sendlike = async () => {
     try {
@@ -208,8 +209,8 @@ export const DeleteBtn = () => {
   const { objNature, localCommentID } = useContext(localCommentProps);
   const { commentsList, setCommentsList, showNetworkResponse, darkMode } =
     useContext(CommentsProvider);
-  const deleteCommentUrl = `http://localhost:4000/api/v1/comments/${localCommentID}`;
-  const deleteReplyUrl = `http://localhost:4000/api/v1/comments/deletereply/${localCommentID}`;
+  const deleteCommentUrl = `https://comment-app-backend.vercel.app/api/v1/comments/${localCommentID}`;
+  const deleteReplyUrl = `https://comment-app-backend.vercel.app/api/v1/comments/deletereply/${localCommentID}`;
   const url = objNature === "comment" ? deleteCommentUrl : deleteReplyUrl;
   const token = JSON.parse(localStorage.getItem("token"));
   // const url = `http://localhost:4000/api/v1/comments/${localCommentID}`;

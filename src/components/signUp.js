@@ -3,7 +3,8 @@ import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { uifunction } from "../pages/signUpPage";
 
-const SignUpUrl = "http://localhost:4000/auth/register";
+// const SignUpUrl = "http://localhost:4000/auth/register";
+const SignUpUrl = "https://comment-app-backend.vercel.app/auth/register";
 
 // depending on response, re route to login page
 function SignUp() {
