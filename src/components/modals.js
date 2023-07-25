@@ -53,4 +53,4 @@ const Logo = () => {
   );
 };
 
-export { SignUpSuccessModal, Spinner, RequestStatus };
+export { SignUpSuccessModal, Spinner, RequestStatus, Logo };

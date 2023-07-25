@@ -1,7 +1,7 @@
 import React from "react";
 import Login from "../components/login";
 import { Link } from "react-router-dom";
-import { Spinner, RequestStatus } from "../components/modals";
+import { Spinner, RequestStatus, Logo } from "../components/modals";
 import { useSpinnerControl } from "../customHooks/spinnerControl";
 import { useUserCredentials } from "../customHooks/userCredentials";
 import { useInputErrorDisplay } from "../customHooks/inputError";
@@ -37,6 +37,8 @@ function LoginPage() {
             opacity: spinner ? 0.5 : 1,
           }}
         >
+          <Logo />
+
           <div className="input">
             <label htmlFor="username">username</label>
             <input

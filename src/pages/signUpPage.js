@@ -6,6 +6,7 @@ import {
   Spinner,
   SignUpSuccessModal,
   RequestStatus,
+  Logo,
 } from "../components/modals";
 import { useSpinnerControl } from "../customHooks/spinnerControl";
 import { useUserCredentials } from "../customHooks/userCredentials";
@@ -36,7 +37,7 @@ export const SignUpPage = () => {
     opacity: spinner ? 0.45 : 1,
     display: "flex",
     flexDirection: "column",
-    gap: "2.0rem",
+    gap: "2rem",
   };
   const uiDisplay = {
     setIsError,
@@ -52,6 +53,7 @@ export const SignUpPage = () => {
         <div className="form-login" style={signupStyle}>
           {!modal ? (
             <>
+              <Logo />
               <div className="input">
                 <label htmlFor="username">username</label>
                 <input
