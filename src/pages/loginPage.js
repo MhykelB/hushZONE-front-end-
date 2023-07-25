@@ -64,7 +64,7 @@ function LoginPage() {
           <div className="input">
             <label htmlFor="password">password</label>
             <input
-              type="text"
+              type="password"
               name="password"
               placeholder="enter password"
               value={password}
