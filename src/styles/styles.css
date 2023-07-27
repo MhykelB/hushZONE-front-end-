@@ -805,7 +805,6 @@ textarea::-webkit-scrollbar {
   right: 0;
   position: fixed;
   background: rgb(20, 34, 48);
-  width: 18%;
   padding: 0.5rem;
   top: 0rem;
   margin-left: auto;
