@@ -4,13 +4,14 @@
   background: $dark-blue;
   border-radius: 0.3rem;
   color: $color3;
-  padding: 0.3rem 0.3rem;
-  margin: 0rem 4rem;
-  width: 50%;
+  padding: 0.3rem 1rem;
+  margin: 0rem auto;
+  // width: 50%;
   position: absolute;
   top: 0.3rem;
-  // margin-left: auto;
-  // margin-right: auto;
+  animation-name: example;
+  animation-duration: 0.2s;
+
   h3 {
     font-size: 0.8rem;
     text-align: center;
@@ -30,13 +31,19 @@
 .requestStatus-chatPage {
   left: 0;
   right: 0;
-  position: absolute;
+  position: fixed;
   background: $dark-blue;
   width: 18%;
   padding: 0.5rem;
   top: 0rem;
-  animation-name: example;
-  animation-duration: 0.2s;
   margin-left: auto;
   margin-right: auto;
 }
+// @media screen and (max-width: 620px) {
+//   .requestStatus,
+//   .requestStatus-chatPage {
+//     h3 {
+//       font-size: 0.8rem;
+//     }
+//   }
+// }

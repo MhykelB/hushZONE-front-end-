@@ -776,11 +776,12 @@ textarea::-webkit-scrollbar {
   background: rgb(20, 34, 48);
   border-radius: 0.3rem;
   color: rgb(239, 242, 242);
-  padding: 0.3rem 0.3rem;
-  margin: 0rem 4rem;
-  width: 50%;
+  padding: 0.3rem 1rem;
+  margin: 0rem auto;
   position: absolute;
   top: 0.3rem;
+  animation-name: example;
+  animation-duration: 0.2s;
 }
 .requestStatus h3,
 .requestStatus-chatPage h3 {
@@ -802,13 +803,11 @@ textarea::-webkit-scrollbar {
 .requestStatus-chatPage {
   left: 0;
   right: 0;
-  position: absolute;
+  position: fixed;
   background: rgb(20, 34, 48);
   width: 18%;
   padding: 0.5rem;
   top: 0rem;
-  animation-name: example;
-  animation-duration: 0.2s;
   margin-left: auto;
   margin-right: auto;
 }

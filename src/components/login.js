@@ -12,12 +12,13 @@ function Login() {
   const Navigate = useNavigate();
   const reqBody = async (url) => {
     try {
+      // uiDisplay.clearInputs();
       const data = await fetch(url, {
         method: "POST",
         headers: { "Content-type": "application/json" },
         body: JSON.stringify(userInfo),
       });
-      uiDisplay.clearInputs();
+
       if (data.status === 200) {
         uiDisplay.setSpinner(false);
         const response = await data.json();
@@ -30,7 +31,7 @@ function Login() {
         setTimeout(() => {
           uiDisplay.showNetworkResponse("");
           uiDisplay.setSpinner(false);
-        }, 2000);
+        }, 3000);
         return;
       } else {
         return Navigate("/errorPage");
@@ -66,10 +67,10 @@ function Login() {
             return { ...prev, password: true };
           });
         }
-
         uiDisplay.setSpinner(true);
+        uiDisplay.clearInputs();
         reqBody(loginUrl);
-        // uiDisplay.clearInputs();
+        console.log(userInfo.password);
       }}
     >
       Log in
